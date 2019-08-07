@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, Button, TextInput  } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, Picker  } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 export default class App extends Component {
@@ -28,7 +28,12 @@ class HomeScreen extends Component{
           placeholder = 'Confirm password'
         />
         <Button
-          title="Login"
+          title="Sign Up"
+          onPress={() => this.props.navigation.navigate("UserMain")}
+        />
+        <Text>Already got an account?</Text>
+        <Button
+          title="Log In"
           onPress={() => this.props.navigation.navigate("Login")}
         />
 
@@ -68,6 +73,10 @@ class UserMainScreen extends Component {
           title="View your progress"
           onPress={() => this.props.navigation.navigate("DailyStats")}
         />
+        <Button
+          title="Record a session"
+          onPress={() => this.props.navigation.navigate("RecordSession")}
+        />
       </View>
     )
   }
@@ -89,11 +98,37 @@ class DailyStatsScreen extends Component {
   }
 }
 
+class RecordSessionScreen extends Component {
+  render() {
+    return(
+      <View>
+        <Text>Record your session</Text>
+        <Picker
+        //we need to add a function setState to be able to pick different values from the menu
+          // selectedValue={this.state.exercise}
+          // onValueChange={(itemValue, itemIndex) =>
+          //   this.setState({exercise: itemValue})
+          // }
+          >
+          <Picker.Item label="Low row" value="exercise"/>
+          <Picker.Item label="Sit ups" value="exercise"/>
+        </Picker>
+
+        <Text>Enter reps</Text>
+        <TextInput
+         placeholder="0"
+         />
+      </View>
+    )
+  }
+}
+
 const Navigator = createStackNavigator({
   Home: {screen: HomeScreen},
   Login: {screen: LoginScreen},
   UserMain: {screen: UserMainScreen},
-  DailyStats: {screen: DailyStatsScreen}
+  DailyStats: {screen: DailyStatsScreen},
+  RecordSession: {screen: RecordSessionScreen}
 },
 {initialRouteName: 'Home'});
 
