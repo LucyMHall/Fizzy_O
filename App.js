@@ -13,16 +13,28 @@ class HomeScreen extends Component{
     return(
       <View>
       <Text>Hello from HomeScreen</Text>
-
+      <Button
+      title="Login"
+      onPress={() => this.props.navigation.navigate("Login")}
+      />
       </View>
     )
   }
 }
 
+class LoginScreen extends Component{
+  render() {
+    return(
+      <View>
+      <Text>Hello from LoginScreen</Text>
+      </View>
+    )
+  }
+}
 
 const Navigator = createStackNavigator({
   Home: {screen: HomeScreen},
-  // Login: {screen: LoginScreen},
+  Login: {screen: LoginScreen},
 },
 {initialRouteName: 'Home'});
 
