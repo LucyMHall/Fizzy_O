@@ -1,17 +1,38 @@
-import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
+import { FormLabel, FormInput, FormValidationMessage } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Welcome to Fizzy_O!</Text>
+export default class App extends Component<{}> {
+
+  constructor(props){
+      super(props);
+
+      this.state = {
+        username: ""
+      }
+    }
+
+    _viewUsername() {
+      console.log(this.state.username)
+    }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <TextInput
+          placeholder = "username"
+          onChangeText={(text) => this.setState({username: text})}
+        />
       <Button
-        // onPress={}
-        title="login"
+        onPress = {() => this._viewUsername()}
+        title="submit"
       />
-    </View>
-  )
+      </View>
+    );
+  }
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
