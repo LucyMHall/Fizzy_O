@@ -13,7 +13,7 @@ describe ('App', () => {
     it("should render a label", () => {
       const wrap = shallow(<App />);
 
-      expect(wrap.containsMatchingElement("Open up App.js to start working on your app!")).toBeTruthy()
+      expect(wrap.containsMatchingElement("Welcome to Fizzy_O!")).toBeTruthy()
     });
     });
   });
