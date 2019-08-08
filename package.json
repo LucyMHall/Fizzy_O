@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "expo": "^34.0.1",
+    "jest-enzyme": "^7.1.0",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
@@ -17,10 +18,22 @@
   },
   "devDependencies": {
     "babel-preset-expo": "^6.0.0",
-    "jest": "^24.8.0"
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "jest": "^24.8.0",
+    "jsdom": "15.1.1",
+    "jsdom-global": "3.0.2",
+    "react-test-renderer": "^16.8.6"
   },
   "private": true,
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "setupFilesAfterEnv": [
+      "jest-enzyme"
+    ],
+    "testEnvironment": "enzyme",
+    "testEnvironmentOptions": {
+      "enzymeAdapter": "react16"
+    }
   }
 }
