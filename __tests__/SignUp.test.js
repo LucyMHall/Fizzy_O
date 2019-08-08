@@ -10,15 +10,10 @@ import renderer from 'react-test-renderer'
 
 describe ('App', () => {
   describe ('#Text', () => {
-    // it('should display a welcome message', () => {
-    //   const app = shallow(<App/>);
-    //   const text = app.find('Text').at(0).text();
-    //   expect(text).toEqual('Open up App.js to start working on your app!');
-    // });
-    // it("should render a label", () => {
-    //   const wrap = shallow(<App/>);
-    //
-    //   expect(wrap.text()).toEqual("Open up App.js to start working on your app!");
-    // });
+    it("should render a label", () => {
+      const wrap = shallow(<App />);
+
+      expect(wrap.containsMatchingElement("Open up App.js to start working on your app!")).toBeTruthy()
+    });
     });
   });
