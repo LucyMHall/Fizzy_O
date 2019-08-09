@@ -1,73 +1,27 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
-import { FormLabel, FormInput, FormValidationMessage } from 'react-native';
-import {AsyncStorage} from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
+import HomeScreen from './src/signUp';
+import LoginScreen from './src/logIn';
 
-export default class App extends Component<{}> {
 
-  constructor(props){
-      super(props);
+export default function App() {
+  return (
+    <AppContainer/>
 
-      this.state = {
-        username: "",
-        email: ""
-      }
-    }
-
-    _storeData = async (key, value, key2, value2) => {
-      try {
-        await AsyncStorage.setItem(key, value);
-      } catch (error) {
-        // Error saving data
-      }
-      try {
-        await AsyncStorage.setItem(key2, value2);
-      } catch (error) {
-        // Error saving data
-      }
-    };
-
-    _retrieveData = async (search_word) => {
-      try {
-        const value = await AsyncStorage.getItem(search_word);
-        if (value !== null) {
-          // We have data!!
-          console.log(value);
-        } else {
-          console.log("That value does not exist");
-        }
-      } catch (error) {
-        // Error retrieving data
-      }
-    };
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <TextInput
-          placeholder = "username"
-          onChangeText={(text) => this.setState({username: text})}
-        />
-        <TextInput
-          placeholder = "email"
-          onChangeText={(text) => this.setState({email: text})}
-        />
-      <Button
-        onPress = {() => this._storeData('Username',this.state.username, 'Email', this.state.email)}
-        title="save to Async"
-      />
-      <Button
-        onPress = {() => this._retrieveData('Username')}
-        title="retrieve username from Async"
-      />
-      <Button
-        onPress = {() => this._retrieveData('Email')}
-        title="retrieve email from Async"
-      />
-      </View>
-    );
-  }
+  );
 }
+const Navigator = createStackNavigator({
+  HomeScreen: {screen: HomeScreen},
+  LoginScreen: {screen: LoginScreen},
+  // UserMain: {screen: UserMainScreen},
+  DailyStats: {screen: DailyStatsScreen},
+  // RecordSession: {screen: RecordSessionScreen}
+},
+{initialRouteName: 'HomeScreen'});
+const AppContainer = createAppContainer(Navigator);
+
+
 
 
 
