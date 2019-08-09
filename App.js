@@ -13,9 +13,14 @@ export default class App extends Component<{}> {
       }
     }
 
-    _storeData = async (key, value) => {
+    _storeData = async (key, value, key2, value2) => {
       try {
         await AsyncStorage.setItem(key, value);
+      } catch (error) {
+        // Error saving data
+      }
+      try {
+        await AsyncStorage.setItem(key2, value2);
       } catch (error) {
         // Error saving data
       }
@@ -42,13 +47,21 @@ export default class App extends Component<{}> {
           placeholder = "username"
           onChangeText={(text) => this.setState({username: text})}
         />
+        <TextInput
+          placeholder = "email"
+          onChangeText={(text) => this.setState({email: text})}
+        />
       <Button
-        onPress = {() => this._storeData('Username',this.state.username)}
-        title="submit"
+        onPress = {() => this._storeData('Username',this.state.username, 'Email', this.state.email)}
+        title="save to Async"
       />
       <Button
         onPress = {() => this._retrieveData('Username')}
-        title="submit"
+        title="retrieve username from Async"
+      />
+      <Button
+        onPress = {() => this._retrieveData('Email')}
+        title="retrieve email from Async"
       />
       </View>
     );
