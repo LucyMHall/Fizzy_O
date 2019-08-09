@@ -15,7 +15,7 @@ const Navigator = createStackNavigator({
   HomeScreen: {screen: HomeScreen},
   LoginScreen: {screen: LoginScreen},
   // UserMain: {screen: UserMainScreen},
-  // DailyStats: {screen: DailyStatsScreen},
+  DailyStats: {screen: DailyStatsScreen},
   // RecordSession: {screen: RecordSessionScreen}
 },
 {initialRouteName: 'HomeScreen'});
