@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
 export default class HomeScreen extends Component {
   render() {
@@ -7,6 +7,11 @@ export default class HomeScreen extends Component {
     <View style={styles.container}>
       <Text>Welcome to Fizzy_O!</Text>
       <Text>Sign up</Text>
+      <Button
+          title="Sumbit"
+          onPress={() => this.props.navigation.navigate("Login")}
+        />
+
       <Text>Already have an account?</Text>
     </View>
   );
