@@ -8,7 +8,7 @@ export default class HomeScreen extends Component {
       <Text>Welcome to Fizzy_O!</Text>
       <Text>Sign up</Text>
       <Button
-          title="Sumbit"
+          title="Submit"
           onPress={() => this.props.navigation.navigate("Login")}
         />
 
@@ -22,5 +22,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-});
+    },
+  });

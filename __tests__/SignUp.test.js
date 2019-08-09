@@ -30,7 +30,6 @@ describe ('Home Screen ', () => {
         expect(wrap.containsMatchingElement("Already have an account?")).toBeTruthy()
       });
     });
-    describe('test onPress functionality', () => {
+    // describe('test onPress functionality', () => {
 
 });
-  });
