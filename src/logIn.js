@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default class HomeScreen extends Component {
+export default class LoginScreen extends Component {
   render() {
     return(
     <View style={styles.container}>
-      <Text>Welcome to Fizzy_O!</Text>
-      <Text>Sign up</Text>
-      <Text>Already have an account?</Text>
+      <Text>Log In</Text>
     </View>
   );
 }}

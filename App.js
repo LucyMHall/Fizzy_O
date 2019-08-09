@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import HomeScreen from './src/signUp';
+import LoginScreen from './src/logIn';
 
 
 export default function App() {
@@ -12,7 +13,7 @@ export default function App() {
 }
 const Navigator = createStackNavigator({
   HomeScreen: {screen: HomeScreen},
-  // Login: {screen: LoginScreen},
+  LoginScreen: {screen: LoginScreen},
   // UserMain: {screen: UserMainScreen},
   // DailyStats: {screen: DailyStatsScreen},
   // RecordSession: {screen: RecordSessionScreen}

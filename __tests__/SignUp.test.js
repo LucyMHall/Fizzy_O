@@ -8,12 +8,26 @@ import Text from 'react-native';
 Enzyme.configure({ adapter: new Adapter() });
 import renderer from 'react-test-renderer'
 
-describe ('App', () => {
+describe ('Home Screen ', () => {
   describe ('#Text', () => {
-    it("should render a label", () => {
+    it("should render a welcome text", () => {
       const wrap = shallow(<HomeScreen />);
 
       expect(wrap.containsMatchingElement("Welcome to Fizzy_O!")).toBeTruthy()
+      });
     });
+    describe ('#Text', () => {
+      it("should render a sign up text", () => {
+        const wrap = shallow(<HomeScreen />);
+
+        expect(wrap.containsMatchingElement("Sign up")).toBeTruthy()
+      });
+    });
+    describe ('#Text', () => {
+      it("should render a 'already have an account?' text", () => {
+        const wrap = shallow(<HomeScreen />);
+
+        expect(wrap.containsMatchingElement("Already have an account?")).toBeTruthy()
+      });
     });
   });
