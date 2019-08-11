@@ -1,9 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+
 import HomeScreen from './src/signUp';
 import LoginScreen from './src/logIn';
-
+import DailyStatsScreen from './src/dailyStats';
+import RecordSessionScreen from './src/recordSession';
+import UserMainScreen from './src/userMainScreen';
 
 export default function App() {
   return (
@@ -12,13 +15,13 @@ export default function App() {
   );
 }
 const Navigator = createStackNavigator({
-  HomeScreen: {screen: HomeScreen},
-  LoginScreen: {screen: LoginScreen},
-  // UserMain: {screen: UserMainScreen},
+  Home: {screen: HomeScreen},
+  Login: {screen: LoginScreen},
+  UserMain: {screen: UserMainScreen},
   DailyStats: {screen: DailyStatsScreen},
-  // RecordSession: {screen: RecordSessionScreen}
+  RecordSession: {screen: RecordSessionScreen}
 },
-{initialRouteName: 'HomeScreen'});
+{initialRouteName: 'Home'});
 const AppContainer = createAppContainer(Navigator);
 
 
