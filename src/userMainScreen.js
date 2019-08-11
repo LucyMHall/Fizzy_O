@@ -1,15 +1,20 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
-export default class DailyStatsScreen extends Component {
+
+export default class UserMainScreen extends Component {
   render() {
     return(
     <View style={styles.container}>
-      <Text>Daily Stats</Text>
+      <Text>Hi, (username)</Text>
       <Button
-          title="Back to homepage"
-          onPress={() => this.props.navigation.navigate("UserMain")}
-        />
+       title="View your progress"
+       onPress={() => this.props.navigation.navigate("DailyStats")}
+     />
+     <Button
+       title="Record a session"
+       onPress={() => this.props.navigation.navigate("RecordSession")}
+     />
     </View>
   );
 }}

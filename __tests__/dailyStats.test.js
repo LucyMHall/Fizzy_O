@@ -14,7 +14,7 @@ describe ('Daily stats screen', () => {
     it("should render a text on daily stats page", () => {
       const wrap = shallow(<DailyStatsScreen />);
 
-      expect(wrap.containsMatchingElement("Daily Stats")).toBeTruthy()
+      expect(wrap.containsMatchingElement("Daily Stats")).toBeTruthy();
     });
   });
 });

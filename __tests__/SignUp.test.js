@@ -1,9 +1,9 @@
 import React from 'react';
-import Enzyme, { shallow } from 'enzyme';
+import Enzyme, { shallow, ShallowWrapper } from 'enzyme';
 
 import HomeScreen from '../src/signUp';
 import Adapter from 'enzyme-adapter-react-16';
-import Text from 'react-native';
+import { Button, View, Text } from 'react-native';
 
 Enzyme.configure({ adapter: new Adapter() });
 import renderer from 'react-test-renderer'
@@ -30,4 +30,6 @@ describe ('Home Screen ', () => {
         expect(wrap.containsMatchingElement("Already have an account?")).toBeTruthy()
       });
     });
-  });
+    // describe('test onPress functionality', () => {
+
+});
