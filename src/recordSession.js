@@ -1,46 +1,18 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TextInput, Picker } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 export default class RecordSessionScreen extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      exercise: ""
-    }
-  }
-  render(){
+  render() {
     return(
-      <View style={styles.container}>
-        <Text>Record your session</Text>
-        <Picker
-        style={{height: 50, width: 400}}
-          selectedValue={this.state.exercise}
-          onValueChange={(itemValue, itemIndex) =>
-            this.setState({exercise: itemValue})
-          }>
-          <Picker.Item label="Low row" value="exercise"/>
-          <Picker.Item label="Sit ups" value="exercise"/>
-          <Picker.Item label="Quadriceps Stretch" value="exercise"/>
-          <Picker.Item label="Hamstring Stretch" value="exercise"/>
-          <Picker.Item label="Kick backs" value="exercise"/>
-          <Picker.Item label="Bridging" value="exercise"/>
-          <Picker.Item label="Clam Shell" value="exercise"/>
-          <Picker.Item label="Lunges" value="exercise"/>
-        </Picker>
+    <View style={styles.container}>
+      <Text>Record your session</Text>
+      <Text>Log:</Text>
 
-        <Text>Enter reps</Text>
-
-        <TextInput
-         placeholder="0"
-         />
-      </View>
-    );
-  };
-};
-
-
+    </View>
+  );
+}}
 const styles = StyleSheet.create({
-  container:{
+  container: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
