@@ -30,6 +30,7 @@ prettier --print-width 80 --no-semi --single-quote --trailing-comma es5 --write 
 
 ## Tech stack
 
+- [React Native](https://facebook.github.io/react-native/)- a framework for building native apps using React
 - [Enzyme](https://airbnb.io/enzyme/docs/guides/react-native.html) - a JavaScript Testing utility
 - [Jest](https://jestjs.io/docs/en/tutorial-react-native) - a JavaScript testing framework
 - [Prettier](https://prettier.io/) - a linter
