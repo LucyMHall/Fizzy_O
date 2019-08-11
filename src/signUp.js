@@ -57,17 +57,22 @@ export default class HomeScreen extends Component {
         secureTextEntry = {true}
         onChangeText={(text) => this.setState({password: text})}
       />
-      <Button
+      {/* <Button
         onPress = {() => this._storeData(
           'username',this.state.username,
           'email', this.state.email,
           'password', this.state.password)
         }
         title="Save info"
-      />
+      /> */}
       <Button
-        onPress = {() => 
-          this.props.navigation.navigate("UserMain")
+        onPress = {() => {
+          this.props.navigation.navigate("UserMain");
+          this._storeData(
+            'username',this.state.username,
+            'email', this.state.email,
+            'password', this.state.password)
+          }
         }
         title="Sign up"
       />
