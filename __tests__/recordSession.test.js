@@ -16,11 +16,11 @@ describe ('record session screen', () => {
       expect(wrap.containsMatchingElement("Record your session")).toBeTruthy()
     });
   });
-  describe ('#Text', () => {
-    it("should render a text on record session page", () => {
-      const wrap = shallow(<RecordSessionScreen />);
+  // describe ('#Text', () => {
+  //   it("should render a text on record session page", () => {
+  //     const wrap = shallow(<RecordSessionScreen />);
 
-      expect(wrap.containsMatchingElement("Log:")).toBeTruthy()
-    });
-  });
+  //     expect(wrap.containsMatchingElement("Log:")).toBeTruthy()
+  //   });
+  // });
 });
