@@ -1,6 +1,6 @@
 # Fizzy_O
 
-a physiotherapy tracking app that will record your progress over time.
+A physiotherapy tracking app that will record your progress over time.
 
 ### Installing the app
 
@@ -9,7 +9,11 @@ In the command line at the root directory of the project, run the command `npm i
 ```console
 $ npm install
 ```
+### Running the application 
 
+```console 
+$ npm start
+```
 ### Running the tests
 
 In the command line at the root directory, run the command `npm run test`:
