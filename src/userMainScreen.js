@@ -3,12 +3,18 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import {AsyncStorage} from 'react-native';
 
 export default class UserMainScreen extends Component {
+  
+  constructor(props){
+    super(props);
+    this.state = {}
+  }
 
-  _retrieveData = async (search_word) => {
+  _retrieveUsernameData = async () => {
     try {
-      const value = await AsyncStorage.getItem(search_word);
+      const value = await AsyncStorage.getItem('username');
       if (value !== null) {
         // We have data!!
+        this.setState({ username: value })
         console.log(value)
       } else {
         console.log("That value does not exist");
@@ -22,11 +28,14 @@ export default class UserMainScreen extends Component {
     return(
       <View>
         <Text>Let's get Fizzy-cal</Text>
+
+        {this.state.username &&
+          <Text>Hello {this.state.username}</Text>
+        }
         <Button
-          onPress = {() => this._retrieveData('username')}
+          onPress = {() => this._retrieveUsernameData()}
           title="retrieve username from Async"
         />
-
       </View>
     )
   }

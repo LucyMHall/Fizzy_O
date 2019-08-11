@@ -66,7 +66,8 @@ export default class HomeScreen extends Component {
         title="Save info"
       />
       <Button
-        onPress = {() => this.props.navigation.navigate("UserMain")
+        onPress = {() => 
+          this.props.navigation.navigate("UserMain")
         }
         title="Sign up"
       />
