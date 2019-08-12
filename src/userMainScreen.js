@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, ImageBackground } from 'react-native';
 
 
 export default class UserMainScreen extends Component {
   render() {
     return(
-    <View style={styles.container}>
+      <ImageBackground source={require('./assets/pictures/G3.jpg')} style={styles.container}>
       <Text>Hi, (username)</Text>
       <Button
        title="View your progress"
@@ -15,13 +15,13 @@ export default class UserMainScreen extends Component {
        title="Record a session"
        onPress={() => this.props.navigation.navigate("RecordSession")}
      />
-    </View>
+     </ImageBackground>
   );
 }}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
