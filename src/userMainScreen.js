@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import {AsyncStorage} from 'react-native';
 
 export default class UserMainScreen extends Component {
-  
+
   constructor(props){
     super(props);
     this.state = {}
@@ -24,18 +24,17 @@ export default class UserMainScreen extends Component {
     }
   };
 
+  componentDidMount(){
+    this._retrieveUsernameData();
+  }
+
   render() {
     return(
       <View>
         <Text>Let's get Fizzy-cal</Text>
-
         {this.state.username &&
           <Text>Hello {this.state.username}</Text>
         }
-        <Button
-          onPress = {() => this._retrieveUsernameData()}
-          title="retrieve username from Async"
-        />
       </View>
     )
   }
