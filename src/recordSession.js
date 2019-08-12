@@ -39,8 +39,9 @@ export default class RecordSessionScreen extends Component {
 
         <TextInput
           style={styles.textBoxes}
-         placeholder="0"
-         />
+          placeholder="0"
+          onChangeText={(text) => this.setState({ reps: text })}
+        />
 
         <Button
           style={{ padddingTop: 100 }}
