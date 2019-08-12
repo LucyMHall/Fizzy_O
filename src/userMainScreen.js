@@ -1,14 +1,38 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, Button, ImageBackground, TouchableOpacity } from 'react-native';
-
+import { AsyncStorage } from "react-native";
 
 export default class UserMainScreen extends Component {
-  static navigationOptions = { header: null }
+  static navigationOptions = { header: null };
+
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  _retrieveUsernameData = async () => {
+    try {
+      const value = await AsyncStorage.getItem("username");
+      if (value !== null) {
+        // We have data!!
+        this.setState({ username: value });
+        console.log(value);
+      } else {
+        console.log("That value does not exist");
+      }
+    } catch (error) {
+      // Error retrieving data
+    }
+  };
+
+  componentDidMount() {
+    this._retrieveUsernameData();
+  }
 
   render() {
     return(
       <ImageBackground source={require('./assets/pictures/G3.jpg')} style={styles.container}>
-      <Text>Hi, (username)</Text>
+      <Text>Hi, {this.state.username}</Text>
 
      <TouchableOpacity
         style={styles.button}
@@ -46,5 +70,4 @@ const styles = StyleSheet.create({
     padding: 10,
     marginTop: 10
  }
-
 });
