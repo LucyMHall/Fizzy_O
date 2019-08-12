@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { AsyncStorage } from 'react-native'
 import {
   StyleSheet,
   Text,
@@ -16,13 +17,29 @@ export default class LoginScreen extends Component {
     super(props)
 
     this.state = {
-      email: '',
-      password: '',
+      loginEmail: '',
+      loginPassword: '',
+      storedEmail: ''
     }
   }
 
-  _hasMatchingEmailAndPassword = () => {
+  _fetchStoredEmailAndPassword = async () => {
+    try {
+      const value = await AsyncStorage.getItem('email')
+      if (value !== null) {
+        value => this.setState({storedEmail: value})
+      } else {
+        console.log('Nothing stored')
+      }
+    } catch (error) {}
+  }
 
+  _hasMatchingEmailAndPassword = () => {
+    return true
+  }
+
+  componentDidMount() {
+    this._fetchStoredEmailAndPassword()
   }
 
   render() {
@@ -35,13 +52,13 @@ export default class LoginScreen extends Component {
         <TextInput
           style={styles.textBoxes}
           placeholder="Email"
-          onChangeText={text => this.setState({ email: text })}
+          onChangeText={text => this.setState({ loginEmail: text })}
         />
         <TextInput
           style={styles.textBoxes}
           placeholder="Password"
           secureTextEntry={true}
-          onChangeText={text => this.setState({ password: text })}
+          onChangeText={text => this.setState({ loginPassword: text })}
           />
 
         <TouchableOpacity
