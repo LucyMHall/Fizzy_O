@@ -12,6 +12,19 @@ import {
 export default class LoginScreen extends Component {
   static navigationOptions = { header: null }
 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      email: '',
+      password: '',
+    }
+  }
+
+  _hasMatchingEmailAndPassword = () => {
+    
+  }
+
   render() {
     return (
       <ImageBackground
@@ -19,12 +32,26 @@ export default class LoginScreen extends Component {
         style={styles.container}
       >
         <Text>Log In</Text>
-        <TextInput style={styles.textBoxes} placeholder="Email" />
-        <TextInput style={styles.textBoxes} placeholder="Password" />
+        <TextInput
+          style={styles.textBoxes}
+          placeholder="Email"
+          onChangeText={text => this.setState({ email: text })}
+        />
+        <TextInput
+          style={styles.textBoxes}
+          placeholder="Password"
+          onChangeText={text => this.setState({ password: text })}
+          />
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => this.props.navigation.navigate('UserMain')}
+          onPress={() => {
+            if (this._hasMatchingEmailAndPassword()) {
+              this.props.navigation.navigate('UserMain')
+            } else {
+              console.log("Incorrect Match")
+            }
+          }}
         >
           <Text> Log In </Text>
         </TouchableOpacity>
