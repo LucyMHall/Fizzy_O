@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
    },
 
    textBoxes: {
+    paddingLeft:20,
     margin: 5,
     backgroundColor:'white',
     width:300,
