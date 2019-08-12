@@ -1,48 +1,58 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TextInput, Picker, ImageBackground } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Button, ImageBackground } from 'react-native';
+import { iOSUIKit } from 'react-native-typography'
 
-export default class RecordSessionScreen extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      exercise: ""
-    }
-  }
-  render(){
+
+export default class HomeScreen extends Component {
+  render() {
     return(
       <ImageBackground source={require('./assets/pictures/G3.jpg')} style={styles.container}>
-        <Text>Record your session</Text>
-        <Picker
-        style={{height: 50, width: 400}}
-          selectedValue={this.state.exercise}
-          onValueChange={(itemValue, itemIndex) =>
-            this.setState({exercise: itemValue})
-          }>
-          <Picker.Item label="Low row" value="exercise"/>
-          <Picker.Item label="Sit ups" value="exercise"/>
-          <Picker.Item label="Quadriceps Stretch" value="exercise"/>
-          <Picker.Item label="Hamstring Stretch" value="exercise"/>
-          <Picker.Item label="Kick backs" value="exercise"/>
-          <Picker.Item label="Bridging" value="exercise"/>
-          <Picker.Item label="Clam Shell" value="exercise"/>
-          <Picker.Item label="Lunges" value="exercise"/>
-        </Picker>
-
-        <Text>Enter reps</Text>
-
-        <TextInput
-         placeholder="0"
-         />
-    </ImageBackground>
-  )};
-};
-
+        <Text style={iOSUIKit.title4EmphasizedWhite}>Welcome</Text>
+        <Text style={iOSUIKit.title3EmphasizedWhite}>Sign up</Text>
+        <TextInput style={styles.textBoxes}
+            placeholder = 'Username'
+          />
+          <TextInput style={styles.textBoxes}
+            placeholder = 'Email'
+          />
+          <TextInput style={styles.textBoxes}
+            placeholder = 'Password'
+          />
+          <TextInput style={styles.textBoxes}
+            placeholder = 'Confirm password'
+          />
+          <Button
+            title="Sign Up"
+            onPress={() => this.props.navigation.navigate("UserMain")}
+          />
+        <Text>Already have an account?</Text>
+        <Button
+            title="Log In"
+            onPress={() => this.props.navigation.navigate("Login")}
+          />
+      </ImageBackground>
+  );
+}}
 
 const styles = StyleSheet.create({
-  container:{
+  container: {
+    padding: 4,
     flex: 1,
-    // backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+
+   },
+
+   textBoxes: {
+    margin: 5,
+    backgroundColor:'white',
+    width:300,
+    height: 40,
+    fontSize:15,
+    borderRadius: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+
+
+   }
 });
