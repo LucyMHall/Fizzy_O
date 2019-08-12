@@ -39,10 +39,25 @@ export default class RecordSessionScreen extends Component {
 
 
 const styles = StyleSheet.create({
-  container:{
+  container: {
+    padding: 4,
     flex: 1,
     // backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+
+   },
+
+   textBoxes: {
+    margin: 5,
+    backgroundColor:'white',
+    width:300,
+    height: 40,
+    fontSize:15,
+    borderRadius: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+
+
+   }
 });

@@ -33,7 +33,6 @@ export default class HomeScreen extends Component {
       </ImageBackground>
   );
 }}
-
 const styles = StyleSheet.create({
   container: {
     padding: 4,
