@@ -1,24 +1,31 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground  } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+
 import HomeScreen from './src/signUp';
 import LoginScreen from './src/logIn';
-
+import DailyStatsScreen from './src/dailyStats';
+import RecordSessionScreen from './src/recordSession';
+import UserMainScreen from './src/userMainScreen';
 
 export default function App() {
   return (
+    // <ImageBackground source={require('./src/assets/pictures/G3.jpg')} style={styles.container}>
+
     <AppContainer/>
 
+
+    // </ImageBackground>
   );
 }
 const Navigator = createStackNavigator({
-  HomeScreen: {screen: HomeScreen},
-  LoginScreen: {screen: LoginScreen},
-  // UserMain: {screen: UserMainScreen},
+  Home: {screen: HomeScreen},
+  Login: {screen: LoginScreen},
+  UserMain: {screen: UserMainScreen},
   DailyStats: {screen: DailyStatsScreen},
-  // RecordSession: {screen: RecordSessionScreen}
+  RecordSession: {screen: RecordSessionScreen}
 },
-{initialRouteName: 'HomeScreen'});
+{initialRouteName: 'Home'});
 const AppContainer = createAppContainer(Navigator);
 
 
@@ -26,7 +33,7 @@ const AppContainer = createAppContainer(Navigator);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+        // backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
