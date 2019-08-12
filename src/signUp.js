@@ -139,4 +139,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
+  button: {
+   alignItems: 'center',
+   backgroundColor: 'white',
+   width:150,
+   borderRadius: 25,
+   padding: 10,
+   marginTop: 10
+ },
+
+
+ textStyling: {
+   padding:20
+ }
+ 
 })
