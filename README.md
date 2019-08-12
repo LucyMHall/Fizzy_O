@@ -2,8 +2,17 @@
 
 A physiotherapy tracking app that will record your progress over time.
 
-### Installing the app
+## Team
 
+
+### Expo
+Install Expo if don't already have it on your computer
+```console
+$ npm install -g expo-cli
+```
+
+
+### Installing the app
 In the command line at the root directory of the project, run the command `npm install` to install the dependencies needed for the app to run:
 
 ```console
