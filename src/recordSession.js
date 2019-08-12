@@ -9,6 +9,8 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import { AsyncStorage } from 'react-native'
+import moment from "moment";
+
 
 export default class RecordSessionScreen extends Component {
   static navigationOptions = { header: null }
@@ -17,34 +19,68 @@ export default class RecordSessionScreen extends Component {
     super(props)
 
     this.state = {
-      exercise: '',
+      exercise: "",
       reps: [],
+      date: moment(new Date()).format("YYYY-MM-DD")
+    }
+  }
+
+  _storeDate = async (
+    exercise,
+    exercise_value,
+    reps,
+    reps_value,
+    date,
+    date_value
+  ) => {
+    try {
+      await AsyncStorage.setItem(exercise, exercise_value)
+    } catch (error) {
+      // Error saving data
+    }
+    try {
+      await AsyncStorage.setItem(reps, reps_value)
+    } catch (error) {
+      // Error saving data
+    }
+    try {
+      await AsyncStorage.setItem(date, date_value)
+    } catch (error) {
+      // Error saving data
     }
   }
 
   render() {
+    const today = this.state.date;
+    const date = moment(today).format("DD, MMMM, YYYY");
+
     return (
       <ImageBackground
         source={require('./assets/pictures/G3.jpg')}
         style={styles.container}
       >
+        <Text>{date}</Text>
+
         <Text>Record your session</Text>
         <Picker
           style={{ height: 200, width: 400 }}
           itemStyle={{ height: 200 }}
-          selectedValue={(this.state && this.state.exercise) || 'lowRow'}
-          onValueChange={exerciseValue =>
-            this.setState({ exercise: exerciseValue })
+          selectedValue={this.state.exercise}
+          onValueChange={( itemValue, itemIndex ) =>
+            this.setState({ 
+              PickerValue: itemValue,
+              exercise: itemValue 
+              })
           }
         >
-          <Picker.Item label="Low row" value="lowRow" />
-          <Picker.Item label="Sit ups" value="sitUps" />
-          <Picker.Item label="Quadriceps Stretch" value="quadricepsStretch" />
-          <Picker.Item label="Hamstring Stretch" value="hamstringStretch" />
-          <Picker.Item label="Kick backs" value="kickBacks" />
-          <Picker.Item label="Bridging" value="bridging" />
-          <Picker.Item label="Clam Shell" value="clamShell" />
-          <Picker.Item label="Lunges" value="lunges" />
+          <Picker.Item label="Low row" value = "Low Row" />
+          <Picker.Item label="Sit ups" value = "Sit Ups" />
+          <Picker.Item label="Quadriceps Stretch" value = "Quadriceps Stretch" />
+          <Picker.Item label="Hamstring Stretch" value = "Hamstring Stretch" />
+          <Picker.Item label="Kick backs" value = "KickBacks" />
+          <Picker.Item label="Bridging" value = "Bridging" />
+          <Picker.Item label="Clam Shell" value = "Clam Shell" />
+          <Picker.Item label="Lunges" value = "Lunges" />
         </Picker>
 
         <Text>Enter reps</Text>
@@ -53,18 +89,28 @@ export default class RecordSessionScreen extends Component {
           style={styles.textBoxes}
           placeholder="0"
           keyboardType='numeric'
+          maxLength={3}
           onChangeText={text => this.setState({ reps: text })}
         />
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => this.props.navigation.navigate('UserMain')}
-        >
+          onPress={() => {
+          this.props.navigation.navigate('UserMain')
+          this._storeDate(
+           'exercise',
+          this.state.exercise,
+           'reps',
+          this.state.reps,
+           'date',
+           this.state.date,
+          )
+          }}>
           <Text> Submit </Text>
         </TouchableOpacity>
       </ImageBackground>
     )
-  }
+    }
 }
 
 const styles = StyleSheet.create({
@@ -88,7 +134,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'white',
     backgroundColor: 'rgba(255,255,255,0.4)',
-    paddingLeft: 45
+    paddingLeft: 40
   },
 
   button: {
