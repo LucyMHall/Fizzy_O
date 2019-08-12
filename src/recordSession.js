@@ -52,6 +52,7 @@ export default class RecordSessionScreen extends Component {
         <TextInput
           style={styles.textBoxes}
           placeholder="0"
+          keyboardType='numeric'
           onChangeText={text => this.setState({ reps: text })}
         />
 
