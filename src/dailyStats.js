@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, VictoryLabel } from 'victory-native';
 import {
   StyleSheet,
   Text,
@@ -6,6 +7,16 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native'
+
+const data = [
+  { date: '01/08/19', reps: 3, label: 3 },
+  { date: '02/08/19', reps: 5, label: 5 },
+  { date: '03/08/19', reps: 1, label: 1 },
+  { date: '04/08/19', reps: 2, label: 2 },
+  { date: '05/08/19', reps: 9, label: 9 },
+  { date: '06/08/19', reps: 1, label: 1 },
+  { date: '07/08/19', reps: 4, label: 4 }
+];
 
 export default class DailyStatsScreen extends Component {
   static navigationOptions = { header: null }
@@ -17,6 +28,18 @@ export default class DailyStatsScreen extends Component {
         style={styles.container}
       >
         <Text>Daily Stats</Text>
+       <VictoryChart
+         domainPadding={20}
+         >
+         <VictoryBar
+           data={data}
+           style={{ data: { fill: "#FFFFFF" }, labels: { fill: '#FF00FF'} }}
+           labels={(d) => d.y}
+           labelComponent={<VictoryLabel dy={30}/>}
+           x="date" y="reps"/>
+         <VictoryAxis
+         />
+       </VictoryChart>
 
         <TouchableOpacity
           style={styles.button}
