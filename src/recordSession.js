@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { StyleSheet, Text, View, TextInput, Picker, ImageBackground } from 'react-native';
 
 export default class RecordSessionScreen extends Component {
+  static navigationOptions = { header: null }
+
   constructor(props){
     super(props);
     this.state = {

@@ -10,6 +10,7 @@ import RecordSessionScreen from './src/recordSession';
 import UserMainScreen from './src/userMainScreen';
 
 export default function App() {
+
   return (
     // <ImageBackground source={require('./src/assets/pictures/G3.jpg')} style={styles.container}>
 
@@ -34,7 +35,7 @@ const AppContainer = createAppContainer(Navigator);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: '#fff',
+        // backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },

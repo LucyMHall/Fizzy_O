@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Button, ImageBackground } from 'react-native';
 
 
 export default class UserMainScreen extends Component {
+  static navigationOptions = { header: null }
+
   render() {
     return(
       <ImageBackground source={require('./assets/pictures/G3.jpg')} style={styles.container}>

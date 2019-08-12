@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { StyleSheet, Text, View, Button, ImageBackground } from 'react-native';
 
 export default class DailyStatsScreen extends Component {
+  static navigationOptions = { header: null }
+
   render() {
     return(
       <ImageBackground source={require('./assets/pictures/G3.jpg')} style={styles.container}>

@@ -2,14 +2,16 @@ import React, {Component} from 'react';
 import { StyleSheet, Text, View, TextInput, Button, ImageBackground } from 'react-native';
 
 export default class LoginScreen extends Component {
+  static navigationOptions = { header: null }
+
   render() {
     return(
       <ImageBackground source={require('./assets/pictures/G3.jpg')} style={styles.container}>
-      <Text style={styles.textBox}>Log In</Text>
-      <TextInput
+      <Text>Log In</Text>
+      <TextInput style={styles.textBoxes}
           placeholder = 'Email'
         />
-        <TextInput
+        <TextInput style={styles.textBoxes}
           placeholder = 'Password'
         />
         <Button
@@ -27,7 +29,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  textBox: {
-  fontFamily: 'Helvetica'
+  textBoxes: {
+   paddingLeft:20,
+   margin: 5,
+   backgroundColor:'white',
+   width:300,
+   height: 40,
+   fontSize:15,
+   borderRadius: 25,
+   justifyContent: 'center',
+   alignItems: 'center',
+
+
   }
 });
