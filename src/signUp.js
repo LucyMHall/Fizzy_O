@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, Button, TextInput, View } from 'react-native';
+import { StyleSheet, Text, Button, TextInput, View, ImageBackground } from 'react-native';
+import { iOSUIKit } from 'react-native-typography'
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native';
 import {AsyncStorage} from 'react-native';
 
 export default class HomeScreen extends Component {
+  static navigationOptions = { header: null }
 
   constructor(props){
       super(props);
@@ -41,31 +43,33 @@ export default class HomeScreen extends Component {
 
   render() {
     return(
-    <View style={styles.container}>
-      <Text>Welcome to Fizzy_O!</Text>
-      <Text>Sign up</Text>
+    <ImageBackground source={require('./assets/pictures/G3.jpg')} style={styles.container}>
+      <Text style={iOSUIKit.title4EmphasizedWhite}>Welcome to Fizzy-O!</Text>
+      <Text style={iOSUIKit.title3EmphasizedWhite}>Sign up</Text>
       <TextInput
+        style={styles.textBoxes}
         placeholder = "username"
         onChangeText={(text) => this.setState({username: text})}
       />
       <TextInput
+        style={styles.textBoxes}
         placeholder = "email"
         onChangeText={(text) => this.setState({email: text})}
       />
       <TextInput
+        style={styles.textBoxes}
         placeholder = "password"
         secureTextEntry = {true}
         onChangeText={(text) => this.setState({password: text})}
       />
-      {/* <Button
-        onPress = {() => this._storeData(
-          'username',this.state.username,
-          'email', this.state.email,
-          'password', this.state.password)
-        }
-        title="Save info"
-      /> */}
+      <TextInput
+        style={styles.textBoxes}
+        placeholder = 'Confirm password'
+        secureTextEntry = {true}
+        // onChangeText={(text) => this.state.password == text
+      />
       <Button
+        title="Sign up"
         onPress = {() => {
           this.props.navigation.navigate("UserMain");
           this._storeData(
@@ -74,17 +78,35 @@ export default class HomeScreen extends Component {
             'password', this.state.password)
           }
         }
-        title="Sign up"
+
       />
       <Text>Already have an account?</Text>
-    </View>
+      <Button
+          title="Log In"
+          onPress={() => this.props.navigation.navigate("Login")}
+        />
+    </ImageBackground>
   );
 }}
+
 const styles = StyleSheet.create({
   container: {
+    padding: 4,
     flex: 1,
-    backgroundColor: '#fff',
+    
     alignItems: 'center',
     justifyContent: 'center',
-  },
+   },
+
+   textBoxes: {
+    paddingLeft:20,
+    margin: 5,
+    backgroundColor:'white',
+    width:300,
+    height: 40,
+    fontSize:15,
+    borderRadius: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+   }
 });
