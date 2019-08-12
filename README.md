@@ -14,7 +14,6 @@ Install Expo if don't already have it on your computer
 $ npm install -g expo-cli
 ```
 
-
 ### Installing the app
 In the command line at the root directory of the project, run the command `npm install` to install the dependencies needed for the app to run:
 
@@ -47,4 +46,3 @@ prettier --print-width 80 --no-semi --single-quote --trailing-comma es5 --write 
 - [Jest](https://jestjs.io/docs/en/tutorial-react-native) - a JavaScript testing framework
 - [Prettier](https://prettier.io/) - a linter
 
-## Team
