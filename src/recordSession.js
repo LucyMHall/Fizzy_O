@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, Button, View, TextInput, Picker, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Picker, ImageBackground, TouchableOpacity } from 'react-native';
 import { AsyncStorage } from 'react-native';
 
 export default class RecordSessionScreen extends Component {
@@ -43,12 +43,12 @@ export default class RecordSessionScreen extends Component {
           onChangeText={(text) => this.setState({ reps: text })}
         />
 
-        <Button
-          style={{ padddingTop: 100 }}
-          title="Submit"
-          onPress={() => this.props.navigation.navigate("UserMain")}
-        />
-    
+         <TouchableOpacity
+            style={styles.button}
+            onPress={() => this.props.navigation.navigate("UserMain")}
+            >
+            <Text> Submit </Text>
+         </TouchableOpacity>
     </ImageBackground>
   )};
 };
@@ -73,7 +73,19 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 10,
+  },
 
-   }
+  button: {
+    
+    alignItems: 'center',
+    backgroundColor: 'white',
+    opacity: 0.8,
+    borderWidth: 1,
+    borderColor: 'white',
+    width:150,
+    borderRadius: 25,
+    padding: 10,
+    marginTop: 10
+ }
+
 });

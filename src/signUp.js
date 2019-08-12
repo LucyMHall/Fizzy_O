@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, Button, TextInput, View, ImageBackground } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Button, ImageBackground, TouchableOpacity, Image } from 'react-native';
 import { iOSUIKit } from 'react-native-typography'
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native';
 import {AsyncStorage} from 'react-native';
@@ -43,34 +43,39 @@ export default class HomeScreen extends Component {
 
   render() {
     return(
-    <ImageBackground source={require('./assets/pictures/G3.jpg')} style={styles.container}>
-      <Text style={iOSUIKit.title4EmphasizedWhite}>Welcome to Fizzy-O!</Text>
-      <Text style={iOSUIKit.title3EmphasizedWhite}>Sign up</Text>
-      <TextInput
-        style={styles.textBoxes}
-        placeholder = "username"
-        onChangeText={(text) => this.setState({username: text})}
+      <ImageBackground source={require('./assets/pictures/G3.jpg')} style={styles.container}>
+      <Image
+      style={{width: 150, height: 150}}
+
+      source= {require('./assets/pictures/heart_white.png')}
       />
-      <TextInput
-        style={styles.textBoxes}
-        placeholder = "email"
-        onChangeText={(text) => this.setState({email: text})}
-      />
-      <TextInput
-        style={styles.textBoxes}
-        placeholder = "password"
-        secureTextEntry = {true}
-        onChangeText={(text) => this.setState({password: text})}
-      />
-      <TextInput
-        style={styles.textBoxes}
-        placeholder = 'Confirm password'
-        secureTextEntry = {true}
-        // onChangeText={(text) => this.state.password == text
-      />
-      <Button
-        title="Sign up"
-        onPress = {() => {
+        <Text style={styles.textStyling}>Sign up</Text>
+
+        <TextInput
+       style={styles.textBoxes}
+       placeholder = "username"
+       onChangeText={(text) => this.setState({username: text})}
+     />
+     <TextInput
+       style={styles.textBoxes}
+       placeholder = "email"
+       onChangeText={(text) => this.setState({email: text})}
+     />
+     <TextInput
+       style={styles.textBoxes}
+       placeholder = "password"
+       secureTextEntry = {true}
+       onChangeText={(text) => this.setState({password: text})}
+     />
+     <TextInput
+       style={styles.textBoxes}
+       placeholder = 'Confirm password'
+       secureTextEntry = {true}
+       // onChangeText={(text) => this.state.password == text
+     />
+        <TouchableOpacity
+           style={styles.button}
+            onPress = {() => {
           this.props.navigation.navigate("UserMain");
           this._storeData(
             'username',this.state.username,
@@ -78,14 +83,19 @@ export default class HomeScreen extends Component {
             'password', this.state.password)
           }
         }
+           <Text> Sign Up </Text>
+        </TouchableOpacity>
 
-      />
-      <Text>Already have an account?</Text>
-      <Button
-          title="Log In"
-          onPress={() => this.props.navigation.navigate("Login")}
-        />
-    </ImageBackground>
+
+        <Text style = {iOSUIKit.title4EmphasizedWhite, styles.textStyling} >Already have an account?</Text>
+
+        <TouchableOpacity
+           style={styles.button}
+           onPress={() => this.props.navigation.navigate("Login")}>
+           <Text> Log In </Text>
+        </TouchableOpacity>
+
+      </ImageBackground>
   );
 }}
 
@@ -99,14 +109,15 @@ const styles = StyleSheet.create({
    },
 
    textBoxes: {
+    borderWidth: 1,
+    borderColor: 'white',
     paddingLeft:20,
     margin: 5,
-    backgroundColor:'white',
+    backgroundColor: 'rgba(255,255,255,0.4)',
     width:300,
     height: 40,
     fontSize:15,
     borderRadius: 25,
     justifyContent: 'center',
     alignItems: 'center',
-   }
 });

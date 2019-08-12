@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { StyleSheet, Text, View, Button, ImageBackground } from "react-native";
+import React, {Component} from 'react';
+import { StyleSheet, Text, View, Button, ImageBackground, TouchableOpacity } from 'react-native';
 import { AsyncStorage } from "react-native";
 
 export default class UserMainScreen extends Component {
@@ -31,26 +31,43 @@ export default class UserMainScreen extends Component {
 
   render() {
     return(
-      <ImageBackground source={require("./assets/pictures/G3.jpg")} style={styles.container}>
-          <Text>Let's get Fizzy-cal</Text>
-            <Text>Hello {this.state.username}</Text>
-          <Button
-            title="View your progress"
-            onPress={() => this.props.navigation.navigate("DailyStats")}
-          />
-          <Button
-            title="Record a session"
-            onPress={() => this.props.navigation.navigate("RecordSession")}
-          />
-      </ImageBackground>
-    );
-  }
-}
+      <ImageBackground source={require('./assets/pictures/G3.jpg')} style={styles.container}>
+      <Text>Hi, {this.state.username}</Text>
+
+     <TouchableOpacity
+        style={styles.button}
+        onPress={() => this.props.navigation.navigate("DailyStats")}
+        >
+        <Text> View your progress </Text>
+     </TouchableOpacity>
+
+     <TouchableOpacity
+        style={styles.button}
+        onPress={() => this.props.navigation.navigate("RecordSession")}
+        >
+        <Text> Record a session </Text>
+     </TouchableOpacity>
+
+
+     </ImageBackground>
+  );
+}}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: '#fff',
-    alignItems: "center",
-    justifyContent: "center"
-  }
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  button: {
+    alignItems: 'center',
+    backgroundColor: 'white',
+    opacity: 0.8,
+    borderWidth: 1,
+    borderColor: 'white',
+    width:150,
+    borderRadius: 25,
+    padding: 10,
+    marginTop: 10
+ }
 });
