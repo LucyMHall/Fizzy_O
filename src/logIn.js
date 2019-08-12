@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { AsyncStorage } from 'react-native'
 import {
   StyleSheet,
   Text,
@@ -12,6 +13,35 @@ import {
 export default class LoginScreen extends Component {
   static navigationOptions = { header: null }
 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      loginEmail: '',
+      loginPassword: '',
+      storedEmail: ''
+    }
+  }
+
+  _fetchStoredEmailAndPassword = async () => {
+    try {
+      const value = await AsyncStorage.getItem('email')
+      if (value !== null) {
+        value => this.setState({storedEmail: value})
+      } else {
+        console.log('Nothing stored')
+      }
+    } catch (error) {}
+  }
+
+  _hasMatchingEmailAndPassword = () => {
+    return true
+  }
+
+  componentDidMount() {
+    this._fetchStoredEmailAndPassword()
+  }
+
   render() {
     return (
       <ImageBackground
@@ -19,12 +49,27 @@ export default class LoginScreen extends Component {
         style={styles.container}
       >
         <Text>Log In</Text>
-        <TextInput style={styles.textBoxes} placeholder="Email" />
-        <TextInput style={styles.textBoxes} placeholder="Password" />
+        <TextInput
+          style={styles.textBoxes}
+          placeholder="Email"
+          onChangeText={text => this.setState({ loginEmail: text })}
+        />
+        <TextInput
+          style={styles.textBoxes}
+          placeholder="Password"
+          secureTextEntry={true}
+          onChangeText={text => this.setState({ loginPassword: text })}
+          />
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => this.props.navigation.navigate('UserMain')}
+          onPress={() => {
+            if (this._hasMatchingEmailAndPassword()) {
+              this.props.navigation.navigate('UserMain')
+            } else {
+              console.log("Incorrect Match")
+            }
+          }}
         >
           <Text> Log In </Text>
         </TouchableOpacity>
