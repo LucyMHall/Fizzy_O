@@ -22,7 +22,7 @@ export default class LoginScreen extends Component {
   }
 
   _hasMatchingEmailAndPassword = () => {
-    
+
   }
 
   render() {
@@ -40,6 +40,7 @@ export default class LoginScreen extends Component {
         <TextInput
           style={styles.textBoxes}
           placeholder="Password"
+          secureTextEntry={true}
           onChangeText={text => this.setState({ password: text })}
           />
 
