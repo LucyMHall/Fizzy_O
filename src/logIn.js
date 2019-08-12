@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { StyleSheet, Text, View, TextInput, Button, ImageBackground } from 'react-native';
 
 export default class LoginScreen extends Component {
+  static navigationOptions = { header: null }
+
   render() {
     return(
       <ImageBackground source={require('./assets/pictures/G3.jpg')} style={styles.container}>

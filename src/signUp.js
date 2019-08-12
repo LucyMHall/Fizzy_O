@@ -4,6 +4,8 @@ import { iOSUIKit } from 'react-native-typography'
 
 
 export default class HomeScreen extends Component {
+  static navigationOptions = { header: null }
+
   render() {
     return(
       <ImageBackground source={require('./assets/pictures/G3.jpg')} style={styles.container}>
