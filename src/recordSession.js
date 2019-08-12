@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TextInput, Picker, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Picker, ImageBackground, TouchableOpacity } from 'react-native';
 
 export default class RecordSessionScreen extends Component {
   static navigationOptions = { header: null }
@@ -35,6 +35,14 @@ export default class RecordSessionScreen extends Component {
         <TextInput
          placeholder="0"
          />
+
+         <TouchableOpacity
+            style={styles.button}
+            onPress={() => this.props.navigation.navigate("UserMain")}
+            >
+            <Text> Submit </Text>
+         </TouchableOpacity>
+
     </ImageBackground>
   )};
 };
@@ -59,7 +67,18 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     justifyContent: 'center',
     alignItems: 'center',
+  },
 
-
-   }
+  button: {
+    
+    alignItems: 'center',
+    backgroundColor: 'white',
+    opacity: 0.8,
+    borderWidth: 1,
+    borderColor: 'white',
+    width:150,
+    borderRadius: 25,
+    padding: 10,
+    marginTop: 10
+ }
 });

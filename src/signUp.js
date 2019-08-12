@@ -82,6 +82,10 @@ const styles = StyleSheet.create({
 
   textStyling: {
     padding:20
+  },
+
+  logInButton: {
+    marginBottom:20
   }
 
 });
