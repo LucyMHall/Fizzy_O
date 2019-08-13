@@ -25,23 +25,64 @@ export default class RecordSessionScreen extends Component {
     }
   }
 
-  _storeDate = async (
+  _storeExercise = async (
     exercise_key,
-    exercise_name,
-    date_value,
-    reps_value
+    exercise_name
   ) => {
     try {
       await AsyncStorage.setItem(exercise_key, exercise_name)
     } catch (error) {
-      // Error saving data
-    }
-    try {
-      await AsyncStorage.setItem(date_value, reps_value)
-    } catch (error) {
-      // Error saving data
+      //Error saving data
     }
   }
+
+  _storeNewDate = async (
+    date_key,
+    reps_value
+  ) => {
+    try {
+      await AsyncStorage.setItem(date_key, reps_value)
+    } catch (error) {
+      //Error saving data
+    }
+  }
+
+  _updateStoredDate = () => { 
+    console.log("this is the sad path")
+  }
+
+  _checkAndStoreData = () => {
+    this._storeExercise(
+      "exercise",
+      this.state.exercise,
+    )
+    if (true == true) {
+    this._storeNewDate(
+      this.state.date,
+      this.state.reps
+    )
+    } else {
+    this._updateStoredDate()
+    }
+  }
+
+  // _storeData = async (
+  //   exercise_key,
+  //   exercise_name,
+  //   date_key,
+  //   reps_value
+  // ) => {
+  //   try {
+  //     await AsyncStorage.setItem(exercise_key, exercise_name)
+  //   } catch (error) {
+  //     // Error saving data
+  //   }
+  //   try {
+  //     await AsyncStorage.setItem(date_key, reps_value)
+  //   } catch (error) {
+  //     // Error saving data
+  //   }
+  // }
 
   render() {
 
@@ -96,11 +137,11 @@ export default class RecordSessionScreen extends Component {
               console.log("Select an exercise")
             } else {
               this.props.navigation.navigate('UserMain')
-              this._storeDate(
-                "exercise",
-                this.state.exercise,
-                this.state.date,
-                this.state.reps
+              this._checkAndStoreData(
+                // "exercise",
+                // this.state.exercise,
+                // this.state.date,
+                // this.state.reps
               )
             }
           }}>
