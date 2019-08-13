@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground  } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import HomeScreen from './src/signUp';
@@ -8,13 +8,19 @@ import DailyStatsScreen from './src/dailyStats';
 import RecordSessionScreen from './src/recordSession';
 import UserMainScreen from './src/userMainScreen';
 
+const DismissKeyboard = ({ children }) => (
+  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    {children}
+  </TouchableWithoutFeedback>
+);
+
 export default function App() {
   return (
     // <ImageBackground source={require('./src/assets/pictures/G3.jpg')} style={styles.container}>
-
+    <DismissKeyboard>
     <AppContainer/>
 
-
+    </DismissKeyboard>
     // </ImageBackground>
   );
 }

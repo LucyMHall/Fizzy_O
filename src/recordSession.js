@@ -7,6 +7,8 @@ import {
   Picker,
   ImageBackground,
   TouchableOpacity,
+  Keyboard,
+  TouchableWithoutFeedback,
 } from 'react-native'
 import { AsyncStorage } from 'react-native'
 import moment from "moment";
@@ -20,37 +22,24 @@ export default class RecordSessionScreen extends Component {
 
     this.state = {
       exercise: "",
-      reps: [],
+      reps: "",
       date: moment(new Date()).format("YYYY-MM-DD")
     }
   }
 
   _storeDate = async (
-    exercise,
-    exercise_value,
-    reps,
-    reps_value,
-    date,
-    date_value
+    date_value,
+    reps_value
   ) => {
     try {
-      await AsyncStorage.setItem(exercise, exercise_value)
-    } catch (error) {
-      // Error saving data
-    }
-    try {
-      await AsyncStorage.setItem(reps, reps_value)
-    } catch (error) {
-      // Error saving data
-    }
-    try {
-      await AsyncStorage.setItem(date, date_value)
+      await AsyncStorage.setItem(date_value, reps_value)
     } catch (error) {
       // Error saving data
     }
   }
 
   render() {
+
     const today = this.state.date;
     const date = moment(today).format("DD, MMMM, YYYY");
 
@@ -59,6 +48,7 @@ export default class RecordSessionScreen extends Component {
         source={require('./assets/pictures/G3.jpg')}
         style={styles.container}
       >
+
         <Text>{date}</Text>
 
         <Text>Record your session</Text>
@@ -66,7 +56,7 @@ export default class RecordSessionScreen extends Component {
           style={{ height: 200, width: 400 }}
           itemStyle={{ height: 200 }}
           selectedValue={this.state.exercise}
-          onValueChange={( itemValue, itemIndex ) =>
+          onValueChange={( itemValue ) =>
             this.setState({ 
               PickerValue: itemValue,
               exercise: itemValue 
@@ -98,12 +88,8 @@ export default class RecordSessionScreen extends Component {
           onPress={() => {
           this.props.navigation.navigate('UserMain')
           this._storeDate(
-           'exercise',
-          this.state.exercise,
-           'reps',
-          this.state.reps,
-           'date',
-           this.state.date,
+            this.state.date,
+            this.state.reps
           )
           }}>
           <Text> Submit </Text>
