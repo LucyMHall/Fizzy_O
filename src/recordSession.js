@@ -21,7 +21,7 @@ export default class RecordSessionScreen extends Component {
     this.state = {
       exercise: "",
       reps: "",
-      date: moment(new Date()).format("YYYY-MM-DD")
+      date: moment(new Date()).format("L")
     }
   }
 
@@ -62,13 +62,13 @@ export default class RecordSessionScreen extends Component {
           itemStyle={{ height: 200 }}
           selectedValue={this.state.exercise}
           onValueChange={( itemValue ) =>
-            this.setState({ 
+            this.setState({
               PickerValue: itemValue,
-              exercise: itemValue 
+              exercise: itemValue
               })
           }
         >
-          <Picker.Item label="↓ Select an exercise ↓" value="" />        
+          <Picker.Item label="↓ Select an exercise ↓" value="" />
           <Picker.Item label="Low row" value = "Low Row" />
           <Picker.Item label="Sit ups" value = "Sit Ups" />
           <Picker.Item label="Quadriceps Stretch" value = "Quadriceps Stretch" />

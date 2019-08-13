@@ -8,6 +8,7 @@ import {
   ImageBackground,
 } from 'react-native'
 import { AsyncStorage } from 'react-native'
+import moment from "moment";
 
 const data = [
   { date: '01/08/19', reps: 3, label: 3 },
@@ -42,8 +43,19 @@ export default class DailyStatsScreen extends Component {
     }
   }
 
+  _retrieveExerciseData = async () => {
+    try {
+      var current_day = moment(new Date()).format("L")
+      const value = await AsyncStorage.multiGet([current_day], dates)
+      console.log(dates)
+    } catch (error) {
+      // Error retrieving data
+    }
+  }
+
   componentDidMount() {
     this._retrieveExerciseName()
+    this._retrieveExerciseData()
   }
 
   render() {
