@@ -28,9 +28,16 @@ export default class RecordSessionScreen extends Component {
   }
 
   _storeDate = async (
+    exercise_key,
+    exercise_name,
     date_value,
     reps_value
   ) => {
+    try {
+      await AsyncStorage.setItem(exercise_key, exercise_name)
+    } catch (error) {
+      // Error saving data
+    }
     try {
       await AsyncStorage.setItem(date_value, reps_value)
     } catch (error) {
@@ -88,6 +95,8 @@ export default class RecordSessionScreen extends Component {
           onPress={() => {
           this.props.navigation.navigate('UserMain')
           this._storeDate(
+            "exercise",
+            this.state.exercise,
             this.state.date,
             this.state.reps
           )
