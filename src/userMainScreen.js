@@ -24,7 +24,7 @@ export default class UserMainScreen extends Component {
         // We have data!!
         this.setState({ username: value })
       } else {
-        console.log('That value does not exist')
+        console.log('The username does not exist')
       }
     } catch (error) {
       // Error retrieving data
