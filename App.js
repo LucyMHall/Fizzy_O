@@ -8,19 +8,12 @@ import DailyStatsScreen from './src/dailyStats';
 import RecordSessionScreen from './src/recordSession';
 import UserMainScreen from './src/userMainScreen';
 
-const DismissKeyboard = ({ children }) => (
-  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-    {children}
-  </TouchableWithoutFeedback>
-);
-
 export default function App() {
   return (
     // <ImageBackground source={require('./src/assets/pictures/G3.jpg')} style={styles.container}>
-    <DismissKeyboard>
-    <AppContainer/>
 
-    </DismissKeyboard>
+    <AppContainer/>
+    
     // </ImageBackground>
   );
 }
