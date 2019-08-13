@@ -153,5 +153,5 @@ const styles = StyleSheet.create({
  textStyling: {
    padding:20
  }
- 
+
 })

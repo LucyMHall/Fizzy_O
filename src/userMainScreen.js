@@ -23,7 +23,6 @@ export default class UserMainScreen extends Component {
       if (value !== null) {
         // We have data!!
         this.setState({ username: value })
-    
       } else {
         console.log('The username does not exist')
       }
