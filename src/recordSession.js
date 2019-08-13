@@ -51,12 +51,25 @@ export default class RecordSessionScreen extends Component {
     console.log("this is the sad path")
   }
 
+  _hasDate = async () => {
+    try {
+      const value = await AsyncStorage.getItem(`${this.state.date}`)
+      if (value !== null) {
+        return "new"
+      } else {
+        return "update"
+      }
+    } catch (error) {
+      // Error retrieving data
+    }
+  }
+
   _checkAndStoreData = () => {
     this._storeExercise(
       "exercise",
       this.state.exercise,
     )
-    if (true == true) {
+    if ( this._hasDate() == "new") {
     this._storeNewDate(
       this.state.date,
       this.state.reps
@@ -65,6 +78,22 @@ export default class RecordSessionScreen extends Component {
     this._updateStoredDate()
     }
   }
+
+
+  // _retrieveExerciseName = async () => {
+  //   try {
+  //     const value = await AsyncStorage.getItem("exercise")
+  //     if (value !== null) {
+  //       // We have data!!
+  //       this.setState({ exercise: value })
+  //       console.log(this.state.exercise)
+  //     } else {
+  //       console.log('The exercise does not exist')
+  //     }
+  //   } catch (error) {
+  //     // Error retrieving data
+  //   }
+  // }
 
   // _storeData = async (
   //   exercise_key,
