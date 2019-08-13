@@ -68,6 +68,7 @@ export default class RecordSessionScreen extends Component {
               })
           }
         >
+          <Picker.Item label="↓ Select an exercise ↓" value="" />        
           <Picker.Item label="Low row" value = "Low Row" />
           <Picker.Item label="Sit ups" value = "Sit Ups" />
           <Picker.Item label="Quadriceps Stretch" value = "Quadriceps Stretch" />
@@ -91,13 +92,17 @@ export default class RecordSessionScreen extends Component {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
-          this.props.navigation.navigate('UserMain')
-          this._storeDate(
-            "exercise",
-            this.state.exercise,
-            this.state.date,
-            this.state.reps
-          )
+            if (this.state.exercise == "") {
+              console.log("Select an exercise")
+            } else {
+              this.props.navigation.navigate('UserMain')
+              this._storeDate(
+                "exercise",
+                this.state.exercise,
+                this.state.date,
+                this.state.reps
+              )
+            }
           }}>
           <Text> Submit </Text>
         </TouchableOpacity>

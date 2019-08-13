@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native'
+import { AsyncStorage } from 'react-native'
 
 const data = [
   { date: '01/08/19', reps: 3, label: 3 },
@@ -21,13 +22,38 @@ const data = [
 export default class DailyStatsScreen extends Component {
   static navigationOptions = { header: null }
 
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+
+  _retrieveExerciseName = async () => {
+    try {
+      const value = await AsyncStorage.getItem("exercise")
+      if (value !== null) {
+        // We have data!!
+        this.setState({ exercise: value })
+        console.log(this.state.exercise)
+      } else {
+        console.log('The exercise does not exist')
+      }
+    } catch (error) {
+      // Error retrieving data
+    }
+  }
+
+  componentDidMount() {
+    this._retrieveExerciseName()
+  }
+
   render() {
     return (
       <ImageBackground
         source={require('./assets/pictures/G3.jpg')}
         style={styles.container}
       >
-        <Text>Daily Stats</Text>
+        <Text>Your progress on {this.state.exercise}</Text>
+
        <VictoryChart
          domainPadding={20}
          >
