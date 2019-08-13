@@ -6,9 +6,7 @@ import {
   TextInput,
   Picker,
   ImageBackground,
-  TouchableOpacity,
-  Keyboard,
-  TouchableWithoutFeedback,
+  TouchableOpacity
 } from 'react-native'
 import { AsyncStorage } from 'react-native'
 import moment from "moment";
