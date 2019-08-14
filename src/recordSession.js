@@ -46,7 +46,7 @@ export default class RecordSessionScreen extends Component {
   render() {
 
     const today = this.state.date;
-    const date = moment(today).format("DD, MMMM, YYYY");
+    const date = moment(today).format("L");
 
     return (
       <ImageBackground

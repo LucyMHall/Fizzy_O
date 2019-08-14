@@ -10,22 +10,14 @@ import {
 import { AsyncStorage } from 'react-native'
 import moment from "moment";
 
-const data = [
-  { date: '01/08/19', reps: 3, label: 3 },
-  { date: '02/08/19', reps: 5, label: 5 },
-  { date: '03/08/19', reps: 1, label: 1 },
-  { date: '04/08/19', reps: 2, label: 2 },
-  { date: '05/08/19', reps: 9, label: 9 },
-  { date: '06/08/19', reps: 1, label: 1 },
-  { date: '07/08/19', reps: 4, label: 4 }
-];
-
 export default class DailyStatsScreen extends Component {
   static navigationOptions = { header: null }
 
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      data: []
+    }
   }
 
   _retrieveExerciseName = async () => {
@@ -46,8 +38,11 @@ export default class DailyStatsScreen extends Component {
   _retrieveExerciseData = async () => {
     try {
       var current_day = moment(new Date()).format("L")
-      const value = await AsyncStorage.multiGet([current_day], dates)
-      console.log(dates)
+      // var yesterday = current_day.subtract(1, "days").format("L")
+      const value = await AsyncStorage.getItem(current_day)
+      this.setState({reps: value})
+      this.setState({date: current_day })
+      this.setState({data: [{date: this.state.date, label: this.state.reps, reps: this.state.reps}]})
     } catch (error) {
       // Error retrieving data
     }
@@ -70,8 +65,9 @@ export default class DailyStatsScreen extends Component {
          domainPadding={20}
          >
          <VictoryBar
-           data={data}
-           style={{ data: { fill: "#FFFFFF" }, labels: { fill: '#FF00FF'} }}
+          barWidth = {40}
+           data={this.state.data}
+           style={{ data: { fill: "#FFFFFF" }, labels: { fill: '#000000'} }}
            labels={(d) => d.y}
            labelComponent={<VictoryLabel dy={30}/>}
            x="date" y="reps"/>
