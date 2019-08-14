@@ -37,12 +37,13 @@ export default class DailyStatsScreen extends Component {
 
   _retrieveExerciseData = async () => {
     try {
-      var current_day = moment(new Date()).format("L")
+      var current_day = moment(new Date()).format('YYYY-MM-DD')
       // var yesterday = current_day.subtract(1, "days").format("L")
       const value = await AsyncStorage.getItem(current_day)
-      this.setState({reps: value})
-      this.setState({date: current_day })
-      this.setState({data: [{date: this.state.date, label: this.state.reps, reps: this.state.reps}]})
+      console.log(value)
+      // this.setState({reps: value})
+      // this.setState({date: current_day })
+      this.setState({data: [{date: current_day, label: value, reps: value}]})
     } catch (error) {
       // Error retrieving data
     }

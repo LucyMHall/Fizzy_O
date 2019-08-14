@@ -40,21 +40,13 @@ export default class RecordSessionScreen extends Component {
       if (value !== null) {
         const updated_value = Number(value) + Number(this.state.reps)
         await AsyncStorage.setItem(this.state.date, `${updated_value}`)
-            } else {
+      } else {
         await AsyncStorage.setItem(this.state.date, this.state.reps)
         await AsyncStorage.setItem('exercise', this.state.exercise)
       }
     } catch (error) {}
   }
 
-  _storeDate = async (
-    date_key,
-    reps_value
-  ) => {
-    try {
-      await AsyncStorage.setItem(date_key, reps_value)
-    } catch (error) {}
-  }
 
   render() {
 
