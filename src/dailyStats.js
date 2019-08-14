@@ -53,15 +53,14 @@ export default class DailyStatsScreen extends Component {
       var current_day = moment(new Date()).format('YYYY-MM-DD')
       // var yesterday = current_day.subtract(1, "days").format("L")
       const value = await AsyncStorage.getItem(current_day)
-      console.log(value)
-      console.log("=======")
-      console.log(await this._getRepsForDate(this._getDateStringFromDaysAgo(1)))
-      console.log("=======")
       this.setState({data: [
-                            {date: this._getDateStringFromDaysAgo(0), reps: await this._getRepsForDate(this._getDateStringFromDaysAgo(0))},
-                            {date: this._getDateStringFromDaysAgo(1), reps: await this._getRepsForDate(this._getDateStringFromDaysAgo(1))},
-                            {date: this._getDateStringFromDaysAgo(2), reps: await this._getRepsForDate(this._getDateStringFromDaysAgo(2))},
+                            {date: this._getDateStringFromDaysAgo(6), reps: await this._getRepsForDate(this._getDateStringFromDaysAgo(6))},
+                            {date: this._getDateStringFromDaysAgo(5), reps: await this._getRepsForDate(this._getDateStringFromDaysAgo(5))},
+                            {date: this._getDateStringFromDaysAgo(4), reps: await this._getRepsForDate(this._getDateStringFromDaysAgo(4))},
                             {date: this._getDateStringFromDaysAgo(3), reps: await this._getRepsForDate(this._getDateStringFromDaysAgo(3))},
+                            {date: this._getDateStringFromDaysAgo(2), reps: await this._getRepsForDate(this._getDateStringFromDaysAgo(2))},
+                            {date: this._getDateStringFromDaysAgo(1), reps: await this._getRepsForDate(this._getDateStringFromDaysAgo(1))},
+                            {date: this._getDateStringFromDaysAgo(0), reps: await this._getRepsForDate(this._getDateStringFromDaysAgo(0))},
                           ]
                           })
     } catch (error) {
@@ -84,19 +83,22 @@ export default class DailyStatsScreen extends Component {
       >
         <Text style={styles.titleText}>Your progress on {this.state.exercise}</Text>
 
-       <VictoryChart
-         domainPadding={20}
-         >
-         <VictoryBar
-          barWidth = {30}
-           data={this.state.data}
-           style={{ data: { fill: "#FFFFFF" }, labels: { fill: '#000000'} }}
-           labels={(d) => d.reps}
-           labelComponent={<VictoryLabel dy={30}/>}
-           x="date" y="reps"/>
-         <VictoryAxis
-         />
-       </VictoryChart>
+        <VictoryChart
+          domainPadding={20}
+          >
+          <VictoryBar
+           barWidth = {30}
+            data={this.state.data}
+            style={{ data: { fill: "#FFFFFF" }, labels: { fill: '#000000'} }}
+            labels={(d) => d.reps}
+            labelComponent={<VictoryLabel dy={-5}/>}
+            x="date" y="reps"/>
+          <VictoryAxis
+           style = {{
+             tickLabels: {padding: 10, angle:90, dx: 30}
+           }}
+          />
+        </VictoryChart>
 
         <TouchableOpacity
           style={styles.button}
