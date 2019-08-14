@@ -33,22 +33,27 @@ export default class RecordSessionScreen extends Component {
     }
   }
 
+  _checkAndStoreData = async () => {
+    try {
+      var current_day = moment(new Date()).format("YYYY-MM-DD")
+      const value = await AsyncStorage.getItem(current_day)
+      if (value !== null) {
+        const updated_value = Number(value) + Number(this.state.reps)
+        await AsyncStorage.setItem(this.state.date, `${updated_value}`)
+            } else {
+        await AsyncStorage.setItem(this.state.date, this.state.reps)
+        await AsyncStorage.setItem('exercise', this.state.exercise)
+      }
+    } catch (error) {}
+  }
+
   _storeDate = async (
-    exercise_key,
-    exercise_name,
-    date_value,
+    date_key,
     reps_value
   ) => {
     try {
-      await AsyncStorage.setItem(exercise_key, exercise_name)
-    } catch (error) {
-      // Error saving data
-    }
-    try {
-      await AsyncStorage.setItem(date_value, reps_value)
-    } catch (error) {
-      // Error saving data
-    }
+      await AsyncStorage.setItem(date_key, reps_value)
+    } catch (error) {}
   }
 
   render() {
@@ -76,13 +81,13 @@ export default class RecordSessionScreen extends Component {
                       fontFamily: 'HelveticaNeue-Medium' }}
           selectedValue={this.state.exercise}
           onValueChange={( itemValue ) =>
-            this.setState({ 
+            this.setState({
               PickerValue: itemValue,
-              exercise: itemValue 
+              exercise: itemValue
               })
           }
-        >     
-          <Picker.Item label="↓ Select an exercise ↓" value="" />        
+        >
+          <Picker.Item label="↓ Select an exercise ↓" value="" />
           <Picker.Item label="Low row" value = "Low Row" />
           <Picker.Item label="Sit ups" value = "Sit Ups" />
           <Picker.Item label="Quadriceps Stretch" value = "Quadriceps Stretch" />
@@ -109,19 +114,14 @@ export default class RecordSessionScreen extends Component {
               console.log("Select an exercise")
             } else {
               this.props.navigation.navigate('UserMain')
-              this._storeDate(
-                "exercise",
-                this.state.exercise,
-                this.state.date,
-                this.state.reps
-              )
+              this._checkAndStoreData()
             }
           }}>
         <Text style={styles.buttonText}>Submit </Text>
         </TouchableOpacity>
         </KeyboardAvoidingView>
         </DismissKeyboard>
-      </ImageBackground>  
+      </ImageBackground>
     )
     }
 };
