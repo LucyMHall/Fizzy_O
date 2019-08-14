@@ -20,6 +20,8 @@ export default class DailyStatsScreen extends Component {
     }
   }
 
+
+
   _getDateStringFromDaysAgo = (numberOfDays) => {
     return moment().subtract(numberOfDays, "days").format('YYYY-MM-DD');
   }
@@ -31,19 +33,6 @@ export default class DailyStatsScreen extends Component {
         return Number(value)
       } else {
         return 0
-      }
-    } catch (error) {}
-  }
-
-  _retrieveExerciseName = async () => {
-    try {
-      const value = await AsyncStorage.getItem("exercise")
-      if (value !== null) {
-        // We have data!!
-        this.setState({ exercise: value })
-        console.log(this.state.exercise)
-      } else {
-        console.log('The exercise does not exist')
       }
     } catch (error) {}
   }
@@ -69,11 +58,18 @@ export default class DailyStatsScreen extends Component {
   }
 
   componentDidMount() {
-    this._retrieveExerciseName()
     this._retrieveExerciseData()
     var date = this._getDateStringFromDaysAgo(0)
     console.log(this._getRepsForDate(date))
-  }
+    AsyncStorage.multiSet([
+                           [this._getDateStringFromDaysAgo(6), '1'],
+                           [this._getDateStringFromDaysAgo(5), '3'],
+                           [this._getDateStringFromDaysAgo(4), '6'],
+                           [this._getDateStringFromDaysAgo(3), '8'],
+                           [this._getDateStringFromDaysAgo(2), '2'],
+                           [this._getDateStringFromDaysAgo(1), '1'],
+                         ])
+ }
 
   render() {
     return (
@@ -81,7 +77,7 @@ export default class DailyStatsScreen extends Component {
         source={require('./assets/pictures/G3.jpg')}
         style={styles.container}
       >
-        <Text style={styles.titleText}>Your progress on {this.state.exercise}</Text>
+        <Text style={styles.titleText}>Your progress on Low Rows</Text>
 
         <VictoryChart
           domainPadding={20}
@@ -95,7 +91,7 @@ export default class DailyStatsScreen extends Component {
             x="date" y="reps"/>
           <VictoryAxis
            style = {{
-             tickLabels: {padding: 10, angle:90, dx: 30}
+             tickLabels: {padding: 10, angle:90, dx: 15, fontSize: 10}
            }}
           />
         </VictoryChart>
