@@ -8,7 +8,6 @@ import DailyStatsScreen from './src/dailyStats';
 import RecordSessionScreen from './src/recordSession';
 import UserMainScreen from './src/userMainScreen';
 
-
 export default function App() {
   return (
    
