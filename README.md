@@ -31,7 +31,6 @@ We created a [wiki](https://github.com/LucyMHall/Fizzy_O/wiki) page which has no
 - [Github](https://github.com/) - Version control
 - [Trello](https://trello.com/) - Agile and Scrum solution
 
-
 ## Setup
 ### Expo
 Install Expo if don't already have it on your computer
@@ -57,4 +56,32 @@ In the command line at the root directory, run the command `npm run test`:
 
 ```console
 $ npm run test
+```
+
+## User Stories
+
+```
+As a user,
+So that I can sign up
+I want clicking the buttons to take me to the appropriate page
+```
+```
+As a user,
+So that I can log in
+I want clicking the buttons to take me to the appropriate page
+```
+```
+As a user,
+So that I  can use the app 
+I want a homepage to load with log in and sign up buttons
+```
+```
+As a user,
+So that I can sign up or log in 
+I want to be able to have text fields where I can write something in
+```
+```
+As a user, 
+So that the app remembers who I am 
+I want my data to be stored when the submit button is pressed
 ```
