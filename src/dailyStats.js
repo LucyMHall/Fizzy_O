@@ -30,9 +30,7 @@ export default class DailyStatsScreen extends Component {
       } else {
         console.log('The exercise does not exist')
       }
-    } catch (error) {
-      // Error retrieving data
-    }
+    } catch (error) {}
   }
 
   _retrieveExerciseData = async () => {
@@ -43,7 +41,13 @@ export default class DailyStatsScreen extends Component {
       console.log(value)
       // this.setState({reps: value})
       // this.setState({date: current_day })
-      this.setState({data: [{date: current_day, label: value, reps: value}]})
+      this.setState({data: [
+                            {date: current_day, reps: Number(value)},
+                            {date: '2019-08-13', reps: 3},
+                            {date: '2019-08-12', reps: 5},
+                            {date: '2019-08-11', reps: 2},
+                          ]
+                          })
     } catch (error) {
       // Error retrieving data
     }
@@ -66,10 +70,10 @@ export default class DailyStatsScreen extends Component {
          domainPadding={20}
          >
          <VictoryBar
-          barWidth = {40}
+          barWidth = {30}
            data={this.state.data}
            style={{ data: { fill: "#FFFFFF" }, labels: { fill: '#000000'} }}
-           labels={(d) => d.y}
+           labels={(d) => d.reps}
            labelComponent={<VictoryLabel dy={30}/>}
            x="date" y="reps"/>
          <VictoryAxis
