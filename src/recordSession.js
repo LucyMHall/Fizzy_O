@@ -37,7 +37,7 @@ export default class RecordSessionScreen extends Component {
     try {
       var current_day = moment(new Date()).format("YYYY-MM-DD")
       const value = await AsyncStorage.getItem(current_day)
-      if (value !== null) {
+      if (value !== null && !isNaN(value) ) {
         const updated_value = Number(value) + Number(this.state.reps)
         await AsyncStorage.setItem(this.state.date, `${updated_value}`)
       } else {
