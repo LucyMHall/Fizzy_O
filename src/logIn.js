@@ -8,7 +8,16 @@ import {
   Button,
   ImageBackground,
   TouchableOpacity,
+  KeyboardAvoidingView,
+  Keyboard,
+  TouchableWithoutFeedback,
 } from 'react-native'
+
+const DismissKeyboard = ({ children }) => (
+  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    {children}
+  </TouchableWithoutFeedback>
+);
 
 export default class LoginScreen extends Component {
   static navigationOptions = { header: null }
@@ -48,7 +57,12 @@ export default class LoginScreen extends Component {
         source={require('./assets/pictures/G3.jpg')}
         style={styles.container}
       >
-        <Text>Log In</Text>
+        <DismissKeyboard>
+        <KeyboardAvoidingView
+          style={styles.container}
+          behavior="padding"
+        >
+        <Text style={styles.titleText}>Log In</Text>
         <TextInput
           style={styles.textBoxes}
           placeholder="Email"
@@ -60,7 +74,6 @@ export default class LoginScreen extends Component {
           secureTextEntry={true}
           onChangeText={text => this.setState({ loginPassword: text })}
           />
-
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
@@ -71,8 +84,10 @@ export default class LoginScreen extends Component {
             }
           }}
         >
-          <Text> Log In </Text>
+        <Text style={styles.buttonText}>Log In</Text>
         </TouchableOpacity>
+        </KeyboardAvoidingView>
+        </DismissKeyboard>
       </ImageBackground>
     )
   }
@@ -100,10 +115,22 @@ const styles = StyleSheet.create({
 
   button: {
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: 'rgba(255,255,255,0.7)',
     width: 150,
     borderRadius: 25,
     padding: 10,
     marginTop: 10,
   },
+
+  buttonText: {
+    fontFamily: 'HelveticaNeue-Bold',
+    color: '#333333',
+  },
+
+  titleText: {
+    fontSize: 25,
+    fontFamily: 'HelveticaNeue-Light',
+    margin: 20,
+    color: 'white',
+  }
 })
