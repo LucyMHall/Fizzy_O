@@ -130,7 +130,6 @@ const styles = StyleSheet.create({
   container: {
     padding: 4,
     flex: 1,
-    // backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -169,6 +168,7 @@ const styles = StyleSheet.create({
     fontFamily: 'HelveticaNeue-Light',
     margin: 20,
     color: 'white',
+    textAlign: 'center',
   },
 
   textStyling: {

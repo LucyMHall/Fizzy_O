@@ -132,5 +132,6 @@ const styles = StyleSheet.create({
     fontFamily: 'HelveticaNeue-Light',
     margin: 20,
     color: 'white',
+    textAlign: 'center',
   }
 })
