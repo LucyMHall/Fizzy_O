@@ -32,14 +32,16 @@ We created a [wiki](https://github.com/LucyMHall/Fizzy_O/wiki) page which has no
 - [Trello](https://trello.com/) - Agile and Scrum solution
 
 ## Setup
+
 ### Expo
+
 Install Expo if don't already have it on your computer
 ```console
 $ npm install -g expo-cli
 ```
 
 ### Installing the app
-In the command line at the root directory of the project, run the command `npm install` to install the dependencies needed for the app to run:
+In the command line at the root directory of the project, install the dependencies needed for the app to run:
 
 ```console
 $ npm install
@@ -51,8 +53,6 @@ $ npm start
 ```
 
 ### Running the tests
-
-In the command line at the root directory, run the command `npm run test`:
 
 ```console
 $ npm run test
