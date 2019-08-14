@@ -41,20 +41,20 @@ export default class UserMainScreen extends Component {
         source={require('./assets/pictures/G3.jpg')}
         style={styles.container}
       >
-        <Text>Hi, {this.state.username}</Text>
+        <Text style={styles.titleText}>Hi, {this.state.username}</Text>
 
         <TouchableOpacity
           style={styles.button}
           onPress={() => this.props.navigation.navigate('DailyStats')}
         >
-          <Text> View your progress </Text>
+        <Text style={styles.buttonText}>View your progress</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.button}
           onPress={() => this.props.navigation.navigate('RecordSession')}
         >
-          <Text> Record a session </Text>
+        <Text style={styles.buttonText}>Record a session</Text>
         </TouchableOpacity>
       </ImageBackground>
     )
@@ -69,13 +69,26 @@ const styles = StyleSheet.create({
 
   button: {
     alignItems: 'center',
-    backgroundColor: 'white',
-    opacity: 0.8,
-    borderWidth: 1,
-    borderColor: 'white',
-    width: 150,
+    backgroundColor: 'rgba(255,255,255,0.7)',
+    width: 200,
     borderRadius: 25,
     padding: 10,
     marginTop: 10,
+    marginBottom: 10,
   },
+
+  buttonText: {
+    fontFamily: 'HelveticaNeue-Bold',
+    fontSize: 14,
+    color: '#333333',
+    padding: 5,
+  },
+
+  titleText: {
+    fontSize: 25,
+    fontFamily: 'HelveticaNeue-Light',
+    margin: 20,
+    color: 'white',
+    textAlign: 'center',
+  }
 })

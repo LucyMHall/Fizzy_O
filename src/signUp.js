@@ -8,10 +8,19 @@ import {
   ImageBackground,
   TouchableOpacity,
   Image,
+  KeyboardAvoidingView,
+  Keyboard,
+  TouchableWithoutFeedback,
 } from 'react-native'
 import { iOSUIKit } from 'react-native-typography'
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native'
 import { AsyncStorage } from 'react-native'
+
+const DismissKeyboard = ({ children }) => (
+  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    {children}
+  </TouchableWithoutFeedback>
+);
 
 export default class HomeScreen extends Component {
   static navigationOptions = { header: null }
@@ -58,11 +67,16 @@ export default class HomeScreen extends Component {
         source={require('./assets/pictures/G3.jpg')}
         style={styles.container}
       >
+        <DismissKeyboard>
+        <KeyboardAvoidingView
+          style={styles.container}
+          behavior="padding"
+          >
         <Image
           style={{ width: 150, height: 150 }}
           source={require('./assets/pictures/heart_white.png')}
         />
-        <Text style={styles.textStyling}>Sign up</Text>
+        <Text style={styles.titleText}>Sign up</Text>
 
         <TextInput
           style={styles.textBoxes}
@@ -100,7 +114,7 @@ export default class HomeScreen extends Component {
             )
           }}
         >
-          <Text> Sign Up </Text>
+        <Text style={styles.buttonText}> Sign Up </Text>
         </TouchableOpacity>
 
         <Text style={(iOSUIKit.title4EmphasizedWhite, styles.textStyling)}>
@@ -111,8 +125,10 @@ export default class HomeScreen extends Component {
           style={styles.button}
           onPress={() => this.props.navigation.navigate('Login')}
         >
-          <Text> Log In </Text>
+        <Text style={styles.buttonText}>Log In</Text>
         </TouchableOpacity>
+        </KeyboardAvoidingView>
+        </DismissKeyboard>
       </ImageBackground>
     )
   }
@@ -122,7 +138,6 @@ const styles = StyleSheet.create({
   container: {
     padding: 4,
     flex: 1,
-
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -143,16 +158,31 @@ const styles = StyleSheet.create({
 
   button: {
    alignItems: 'center',
-   backgroundColor: 'white',
+   backgroundColor: 'rgba(255,255,255,0.7)',
    width:150,
    borderRadius: 25,
    padding: 10,
-   marginTop: 10
+   marginTop: 10,
  },
 
+ buttonText: {
+   fontFamily: 'HelveticaNeue-Bold',
+   color: '#333333',
+ },
 
  textStyling: {
-   padding:20
+   padding:20,
+   fontFamily: 'HelveticaNeue-Light',
+   color: 'white',
+   fontSize: 16,
+ },
+
+ titleText: {
+   fontSize: 25,
+   fontFamily: 'HelveticaNeue-Light',
+   margin: 20,
+   color: 'white',
+   textAlign: 'center',
  }
 
 })

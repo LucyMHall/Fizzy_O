@@ -6,11 +6,19 @@ import {
   TextInput,
   Picker,
   ImageBackground,
-  TouchableOpacity
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  Keyboard,
+  TouchableWithoutFeedback,
 } from 'react-native'
 import { AsyncStorage } from 'react-native'
 import moment from "moment";
 
+const DismissKeyboard = ({ children }) => (
+  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    {children}
+  </TouchableWithoutFeedback>
+);
 
 export default class RecordSessionScreen extends Component {
   static navigationOptions = { header: null }
@@ -21,45 +29,56 @@ export default class RecordSessionScreen extends Component {
     this.state = {
       exercise: "",
       reps: "",
-      date: moment(new Date()).format("L")
+      date: moment(new Date()).format('YYYY-MM-DD')
     }
   }
 
+  _checkAndStoreData = async () => {
+    try {
+      var current_day = moment(new Date()).format("YYYY-MM-DD")
+      const value = await AsyncStorage.getItem(current_day)
+      if (value !== null) {
+        const updated_value = Number(value) + Number(this.state.reps)
+        await AsyncStorage.setItem(this.state.date, `${updated_value}`)
+            } else {
+        await AsyncStorage.setItem(this.state.date, this.state.reps)
+        await AsyncStorage.setItem('exercise', this.state.exercise)
+      }
+    } catch (error) {}
+  }
+
   _storeDate = async (
-    exercise_key,
-    exercise_name,
-    date_value,
+    date_key,
     reps_value
   ) => {
     try {
-      await AsyncStorage.setItem(exercise_key, exercise_name)
-    } catch (error) {
-      // Error saving data
-    }
-    try {
-      await AsyncStorage.setItem(date_value, reps_value)
-    } catch (error) {
-      // Error saving data
-    }
+      await AsyncStorage.setItem(date_key, reps_value)
+    } catch (error) {}
   }
 
   render() {
 
     const today = this.state.date;
-    const date = moment(today).format("L");
+    const date = moment(today).format('YYYY-MM-DD');
 
     return (
+
       <ImageBackground
         source={require('./assets/pictures/G3.jpg')}
         style={styles.container}
       >
+        <DismissKeyboard>
+        <KeyboardAvoidingView
+          style={styles.container}
+          behavior="padding"
+        >
+        <Text style={styles.titleText}>Record your session</Text>
 
-        <Text>{date}</Text>
-
-        <Text>Record your session</Text>
         <Picker
-          style={{ height: 200, width: 400 }}
-          itemStyle={{ height: 200 }}
+          style={{ height: 200, width: 400,}}
+          itemStyle={{ height: 200,
+                      color: 'white',
+                      fontFamily: 'HelveticaNeue-Medium' }}
           selectedValue={this.state.exercise}
           onValueChange={( itemValue ) =>
             this.setState({
@@ -79,7 +98,7 @@ export default class RecordSessionScreen extends Component {
           <Picker.Item label="Lunges" value = "Lunges" />
         </Picker>
 
-        <Text>Enter reps</Text>
+        <Text style={styles.textStyling}>Enter reps</Text>
 
         <TextInput
           style={styles.textBoxes}
@@ -88,7 +107,6 @@ export default class RecordSessionScreen extends Component {
           maxLength={3}
           onChangeText={text => this.setState({ reps: text })}
         />
-
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
@@ -96,33 +114,28 @@ export default class RecordSessionScreen extends Component {
               console.log("Select an exercise")
             } else {
               this.props.navigation.navigate('UserMain')
-              this._storeDate(
-                "exercise",
-                this.state.exercise,
-                this.state.date,
-                this.state.reps
-              )
+              this._checkAndStoreData()
             }
           }}>
-          <Text> Submit </Text>
+        <Text style={styles.buttonText}>Submit </Text>
         </TouchableOpacity>
+        </KeyboardAvoidingView>
+        </DismissKeyboard>
       </ImageBackground>
     )
     }
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     padding: 4,
     flex: 1,
-    // backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
 
   textBoxes: {
     margin: 5,
-    backgroundColor: 'white',
     width: 100,
     height: 40,
     fontSize: 15,
@@ -132,18 +145,36 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'white',
     backgroundColor: 'rgba(255,255,255,0.4)',
-    paddingLeft: 40
+    paddingLeft: 40,
   },
 
   button: {
     alignItems: 'center',
-    backgroundColor: 'white',
-    opacity: 0.8,
-    borderWidth: 1,
-    borderColor: 'white',
+    backgroundColor: 'rgba(255,255,255,0.7)',
     width: 150,
     borderRadius: 25,
     padding: 10,
     marginTop: 10,
+  },
+
+  buttonText: {
+    fontFamily: 'HelveticaNeue-Bold',
+    color: '#333333',
+    fontSize: 14,
+  },
+
+  titleText: {
+    fontSize: 25,
+    fontFamily: 'HelveticaNeue-Light',
+    margin: 20,
+    color: 'white',
+    textAlign: 'center',
+  },
+
+  textStyling: {
+    padding: 20,
+    fontFamily: 'HelveticaNeue-Light',
+    color: 'white',
+    fontSize: 16,
   },
 })
