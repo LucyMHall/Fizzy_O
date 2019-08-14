@@ -29,7 +29,7 @@ export default class RecordSessionScreen extends Component {
     this.state = {
       exercise: "",
       reps: "",
-      date: moment(new Date()).format("YYYY-MM-DD")
+      date: moment(new Date()).format('YYYY-MM-DD')
     }
   }
 
@@ -59,7 +59,7 @@ export default class RecordSessionScreen extends Component {
   render() {
 
     const today = this.state.date;
-    const date = moment(today).format("L");
+    const date = moment(today).format('YYYY-MM-DD');
 
     return (
 
@@ -73,7 +73,6 @@ export default class RecordSessionScreen extends Component {
           behavior="padding"
         >
         <Text style={styles.titleText}>Record your session</Text>
-        <Text style={styles.textStyling}>{date}</Text>
 
         <Picker
           style={{ height: 200, width: 400,}}
@@ -131,7 +130,6 @@ const styles = StyleSheet.create({
   container: {
     padding: 4,
     flex: 1,
-    // backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -170,6 +168,7 @@ const styles = StyleSheet.create({
     fontFamily: 'HelveticaNeue-Light',
     margin: 20,
     color: 'white',
+    textAlign: 'center',
   },
 
   textStyling: {
