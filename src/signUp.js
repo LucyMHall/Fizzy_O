@@ -8,6 +8,7 @@ import {
   ImageBackground,
   TouchableOpacity,
   Image,
+  KeyboardAvoidingView,
 } from 'react-native'
 import { iOSUIKit } from 'react-native-typography'
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native'
@@ -57,6 +58,10 @@ export default class HomeScreen extends Component {
         source={require('./assets/pictures/G3.jpg')}
         style={styles.container}
       >
+        <KeyboardAvoidingView
+          style={styles.container}
+          behavior="padding"
+          >
         <Image
           style={{ width: 150, height: 150 }}
           source={require('./assets/pictures/heart_white.png')}
@@ -112,6 +117,8 @@ export default class HomeScreen extends Component {
         >
           <Text> Log In </Text>
         </TouchableOpacity>
+        </KeyboardAvoidingView>
+
       </ImageBackground>
     )
   }
