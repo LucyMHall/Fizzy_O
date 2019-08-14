@@ -6,7 +6,8 @@ import {
   TextInput,
   Picker,
   ImageBackground,
-  TouchableOpacity
+  TouchableOpacity,
+  KeyboardAvoidingView,
 } from 'react-native'
 import { AsyncStorage } from 'react-native'
 import moment from "moment";
@@ -21,7 +22,7 @@ export default class RecordSessionScreen extends Component {
     this.state = {
       exercise: "",
       reps: "",
-      date: moment(new Date()).format("YYYY-MM-DD")
+      date: moment(new Date()).format("L")
     }
   }
 
@@ -46,17 +47,22 @@ export default class RecordSessionScreen extends Component {
   render() {
 
     const today = this.state.date;
-    const date = moment(today).format("DD, MMMM, YYYY");
+    const date = moment(today).format("L");
+
 
     return (
       <ImageBackground
         source={require('./assets/pictures/G3.jpg')}
         style={styles.container}
       >
-
+        <KeyboardAvoidingView
+          style={styles.container}
+          behavior="padding"
+        >
+     
+        <Text>Record your session</Text>
         <Text>{date}</Text>
 
-        <Text>Record your session</Text>
         <Picker
           style={{ height: 200, width: 400 }}
           itemStyle={{ height: 200 }}
@@ -89,27 +95,32 @@ export default class RecordSessionScreen extends Component {
           onChangeText={text => this.setState({ reps: text })}
         />
 
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => {
-            if (this.state.exercise == "") {
-              console.log("Select an exercise")
-            } else {
-              this.props.navigation.navigate('UserMain')
-              this._storeDate(
-                "exercise",
-                this.state.exercise,
-                this.state.date,
-                this.state.reps
-              )
-            }
-          }}>
-          <Text> Submit </Text>
-        </TouchableOpacity>
-      </ImageBackground>
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              if (this.state.exercise == "") {
+                console.log("Select an exercise")
+              } else {
+                this.props.navigation.navigate('UserMain')
+                this._storeDate(
+                  "exercise",
+                  this.state.exercise,
+                  this.state.date,
+                  this.state.reps
+                )
+              }
+            }}>
+            <Text> Submit </Text>
+          </TouchableOpacity>
+
+        </KeyboardAvoidingView>
+      </ImageBackground> 
     )
     }
-}
+
+
+};
 
 const styles = StyleSheet.create({
   container: {
