@@ -29,97 +29,32 @@ export default class RecordSessionScreen extends Component {
     this.state = {
       exercise: "",
       reps: "",
-      date: moment(new Date()).format("L")
+      date: moment(new Date()).format("YYYY-MM-DD")
     }
   }
 
-  _storeExercise = async (
-    exercise_key,
-    exercise_name
-  ) => {
+  _checkAndStoreData = async () => {
     try {
-      await AsyncStorage.setItem(exercise_key, exercise_name)
-    } catch (error) {
-      //Error saving data
-    }
+      var current_day = moment(new Date()).format("YYYY-MM-DD")
+      const value = await AsyncStorage.getItem(current_day)
+      if (value !== null) {
+        const updated_value = Number(value) + Number(this.state.reps)
+        await AsyncStorage.setItem(this.state.date, `${updated_value}`)
+            } else {
+        await AsyncStorage.setItem(this.state.date, this.state.reps)
+        await AsyncStorage.setItem('exercise', this.state.exercise)
+      }
+    } catch (error) {}
   }
 
-  _storeNewDate = async (
+  _storeDate = async (
     date_key,
     reps_value
   ) => {
     try {
       await AsyncStorage.setItem(date_key, reps_value)
-    } catch (error) {
-      //Error saving data
-    }
+    } catch (error) {}
   }
-
-  _updateStoredDate = () => { 
-    console.log("this is the sad path")
-  }
-
-  _hasDate = async () => {
-    try {
-      const value = await AsyncStorage.getItem(`${this.state.date}`)
-      if (value !== null) {
-        return "new"
-      } else {
-        return "update"
-      }
-    } catch (error) {
-      // Error retrieving data
-    }
-  }
-
-  _checkAndStoreData = () => {
-    this._storeExercise(
-      "exercise",
-      this.state.exercise,
-    )
-    if ( this._hasDate() == "new") {
-    this._storeNewDate(
-      this.state.date,
-      this.state.reps
-    )
-    } else {
-    this._updateStoredDate()
-    }
-  }
-
-
-  // _retrieveExerciseName = async () => {
-  //   try {
-  //     const value = await AsyncStorage.getItem("exercise")
-  //     if (value !== null) {
-  //       // We have data!!
-  //       this.setState({ exercise: value })
-  //       console.log(this.state.exercise)
-  //     } else {
-  //       console.log('The exercise does not exist')
-  //     }
-  //   } catch (error) {
-  //     // Error retrieving data
-  //   }
-  // }
-
-  // _storeData = async (
-  //   exercise_key,
-  //   exercise_name,
-  //   date_key,
-  //   reps_value
-  // ) => {
-  //   try {
-  //     await AsyncStorage.setItem(exercise_key, exercise_name)
-  //   } catch (error) {
-  //     // Error saving data
-  //   }
-  //   try {
-  //     await AsyncStorage.setItem(date_key, reps_value)
-  //   } catch (error) {
-  //     // Error saving data
-  //   }
-  // }
 
   render() {
 
@@ -147,13 +82,13 @@ export default class RecordSessionScreen extends Component {
                       fontFamily: 'HelveticaNeue-Medium' }}
           selectedValue={this.state.exercise}
           onValueChange={( itemValue ) =>
-            this.setState({ 
+            this.setState({
               PickerValue: itemValue,
-              exercise: itemValue 
+              exercise: itemValue
               })
           }
-        >     
-          <Picker.Item label="↓ Select an exercise ↓" value="" />        
+        >
+          <Picker.Item label="↓ Select an exercise ↓" value="" />
           <Picker.Item label="Low row" value = "Low Row" />
           <Picker.Item label="Sit ups" value = "Sit Ups" />
           <Picker.Item label="Quadriceps Stretch" value = "Quadriceps Stretch" />
@@ -180,19 +115,14 @@ export default class RecordSessionScreen extends Component {
               console.log("Select an exercise")
             } else {
               this.props.navigation.navigate('UserMain')
-              this._checkAndStoreData(
-                // "exercise",
-                // this.state.exercise,
-                // this.state.date,
-                // this.state.reps
-              )
+              this._checkAndStoreData()
             }
           }}>
         <Text style={styles.buttonText}>Submit </Text>
         </TouchableOpacity>
         </KeyboardAvoidingView>
         </DismissKeyboard>
-      </ImageBackground>  
+      </ImageBackground>
     )
     }
 };
