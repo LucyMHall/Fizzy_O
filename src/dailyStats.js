@@ -20,6 +20,21 @@ export default class DailyStatsScreen extends Component {
     }
   }
 
+  _getDateStringFromDaysAgo = (numberOfDays) => {
+    return moment().subtract(numberOfDays, "days").format('YYYY-MM-DD');
+  }
+
+  _getRepsForDate = async (date) => {
+    try {
+      value = await AsyncStorage.getItem(date)
+      if (value !== null && !isNaN(value)) {
+        return Number(value)
+      } else {
+        return 0
+      }
+    } catch (error) {}
+  }
+
   _retrieveExerciseName = async () => {
     try {
       const value = await AsyncStorage.getItem("exercise")
@@ -39,13 +54,14 @@ export default class DailyStatsScreen extends Component {
       // var yesterday = current_day.subtract(1, "days").format("L")
       const value = await AsyncStorage.getItem(current_day)
       console.log(value)
-      // this.setState({reps: value})
-      // this.setState({date: current_day })
+      console.log("=======")
+      console.log(await this._getRepsForDate(this._getDateStringFromDaysAgo(1)))
+      console.log("=======")
       this.setState({data: [
-                            {date: current_day, reps: Number(value)},
-                            {date: '2019-08-13', reps: 3},
-                            {date: '2019-08-12', reps: 5},
-                            {date: '2019-08-11', reps: 2},
+                            {date: this._getDateStringFromDaysAgo(0), reps: await this._getRepsForDate(this._getDateStringFromDaysAgo(0))},
+                            {date: this._getDateStringFromDaysAgo(1), reps: await this._getRepsForDate(this._getDateStringFromDaysAgo(1))},
+                            {date: this._getDateStringFromDaysAgo(2), reps: await this._getRepsForDate(this._getDateStringFromDaysAgo(2))},
+                            {date: this._getDateStringFromDaysAgo(3), reps: await this._getRepsForDate(this._getDateStringFromDaysAgo(3))},
                           ]
                           })
     } catch (error) {
@@ -56,6 +72,8 @@ export default class DailyStatsScreen extends Component {
   componentDidMount() {
     this._retrieveExerciseName()
     this._retrieveExerciseData()
+    var date = this._getDateStringFromDaysAgo(0)
+    console.log(this._getRepsForDate(date))
   }
 
   render() {
