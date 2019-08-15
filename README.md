@@ -12,10 +12,10 @@ A physiotherapy tracking app that will record your progress over time.
 ## Screenshots
 
 <p align="center">
-  <img width="400" height="800" src="https://user-images.githubusercontent.com/23095774/63114702-678b7f00-bf8d-11e9-926e-dcfb10b28464.png">
-  <img width="400" height="800" src="https://user-images.githubusercontent.com/23095774/63114703-678b7f00-bf8d-11e9-8332-e12ba79e1b8e.png">
-  <img width="400" height="800" src="https://user-images.githubusercontent.com/23095774/63114701-678b7f00-bf8d-11e9-9b6a-4b60572da892.png">
-  <img width="400" height="800" src="https://user-images.githubusercontent.com/23095774/63114700-66f2e880-bf8d-11e9-8e3f-a81c48301530.png">
+  <img width="450" height="850" src="https://user-images.githubusercontent.com/23095774/63114969-192ab000-bf8e-11e9-86f9-c7f913496766.jpg">
+  <img width="450" height="850" src="https://user-images.githubusercontent.com/23095774/63114970-19c34680-bf8e-11e9-8cc7-037a1b6b79f4.jpg">
+  <img width="450" height="850" src="https://user-images.githubusercontent.com/23095774/63114968-192ab000-bf8e-11e9-9f1d-8ef2f8a18cce.jpg">
+  <img width="450" height="850" src="https://user-images.githubusercontent.com/23095774/63114966-192ab000-bf8e-11e9-8416-0763cb713519.jpg">
 </p>
 
 
