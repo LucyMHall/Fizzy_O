@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     padding: 10,
     position: 'absolute',
-    bottom: 50
+    bottom: 50,
   },
 
   buttonText: {
