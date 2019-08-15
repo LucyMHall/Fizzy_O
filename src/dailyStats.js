@@ -91,7 +91,8 @@ const styles = StyleSheet.create({
     width: 200,
     borderRadius: 25,
     padding: 10,
-    marginTop: 150,
+    position: 'absolute',
+    bottom: 50,
   },
 
   buttonText: {
