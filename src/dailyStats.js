@@ -83,15 +83,19 @@ export default class DailyStatsScreen extends Component {
           domainPadding={20}
           >
           <VictoryBar
+          animate={{
+            duration: 1000,
+            }}
            barWidth = {30}
             data={this.state.data}
-            style={{ data: { fill: "#FFFFFF" }, labels: { fill: '#000000'} }}
+            cornerRadius={10}
+            style={{ data: { fill: 'rgba(255,255,255, 0.7)'}, labels: { fill: '#CC016B', fontFamily: 'HelveticaNeue', fontWeight: 'bold'} }}
             labels={(d) => d.reps}
-            labelComponent={<VictoryLabel dy={-5}/>}
+            labelComponent={<VictoryLabel dy={30}/>}
             x="date" y="reps"/>
           <VictoryAxis
            style = {{
-             tickLabels: {padding: 10, angle:90, dx: 15, fontSize: 10}
+             tickLabels: {padding: 0, angle:90, dx: 45, dy: 5,  fontSize: 13, fontFamily: 'HelveticaNeue-Medium', fill: 'white' }
            }}
           />
         </VictoryChart>
@@ -120,7 +124,8 @@ const styles = StyleSheet.create({
     width: 200,
     borderRadius: 25,
     padding: 10,
-    marginTop: 10,
+    position: 'absolute',
+    bottom: 50
   },
 
   buttonText: {
