@@ -5,6 +5,7 @@ import {
   View,
   TextInput,
   Picker,
+  Image,
   ImageBackground,
   TouchableOpacity,
   KeyboardAvoidingView,
@@ -64,6 +65,15 @@ export default class RecordSessionScreen extends Component {
           style={styles.container}
           behavior="padding"
         >
+        <Image
+          style={{
+            width: 50, height: 50, top: 20, left: 16,
+            alignSelf: 'flex-end', marginTop: 10, marginLeft: 16,
+            position: 'absolute'
+          }}
+          source={require('./assets/pictures/heart_white.png')}
+        />
+
         <Text style={styles.titleText}>Record your session</Text>
 
         <Picker
@@ -113,7 +123,6 @@ export default class RecordSessionScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 4,
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
