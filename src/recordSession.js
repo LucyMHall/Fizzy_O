@@ -37,24 +37,16 @@ export default class RecordSessionScreen extends Component {
     try {
       var current_day = moment(new Date()).format("YYYY-MM-DD")
       const value = await AsyncStorage.getItem(current_day)
-      if (value !== null) {
+      if (value !== null && !isNaN(value) ) {
         const updated_value = Number(value) + Number(this.state.reps)
         await AsyncStorage.setItem(this.state.date, `${updated_value}`)
-            } else {
+      } else {
         await AsyncStorage.setItem(this.state.date, this.state.reps)
         await AsyncStorage.setItem('exercise', this.state.exercise)
       }
     } catch (error) {}
   }
 
-  _storeDate = async (
-    date_key,
-    reps_value
-  ) => {
-    try {
-      await AsyncStorage.setItem(date_key, reps_value)
-    } catch (error) {}
-  }
 
   render() {
 
@@ -89,13 +81,6 @@ export default class RecordSessionScreen extends Component {
         >
           <Picker.Item label="↓ Select an exercise ↓" value="" />
           <Picker.Item label="Low row" value = "Low Row" />
-          <Picker.Item label="Sit ups" value = "Sit Ups" />
-          <Picker.Item label="Quadriceps Stretch" value = "Quadriceps Stretch" />
-          <Picker.Item label="Hamstring Stretch" value = "Hamstring Stretch" />
-          <Picker.Item label="Kick backs" value = "KickBacks" />
-          <Picker.Item label="Bridging" value = "Bridging" />
-          <Picker.Item label="Clam Shell" value = "Clam Shell" />
-          <Picker.Item label="Lunges" value = "Lunges" />
         </Picker>
 
         <Text style={styles.textStyling}>Enter reps</Text>

@@ -8,43 +8,68 @@ import {
   ImageBackground,
 } from 'react-native'
 import { AsyncStorage } from 'react-native'
-
-const data = [
-  { date: '01/08/19', reps: 3, label: 3 },
-  { date: '02/08/19', reps: 5, label: 5 },
-  { date: '03/08/19', reps: 1, label: 1 },
-  { date: '04/08/19', reps: 2, label: 2 },
-  { date: '05/08/19', reps: 9, label: 9 },
-  { date: '06/08/19', reps: 1, label: 1 },
-  { date: '07/08/19', reps: 4, label: 4 }
-];
+import moment from "moment";
 
 export default class DailyStatsScreen extends Component {
   static navigationOptions = { header: null }
 
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      data: []
+    }
   }
 
-  _retrieveExerciseName = async () => {
+
+
+  _getDateStringFromDaysAgo = (numberOfDays) => {
+    return moment().subtract(numberOfDays, "days").format('YYYY-MM-DD');
+  }
+
+  _getRepsForDate = async (date) => {
     try {
-      const value = await AsyncStorage.getItem("exercise")
-      if (value !== null) {
-        // We have data!!
-        this.setState({ exercise: value })
-        console.log(this.state.exercise)
+      value = await AsyncStorage.getItem(date)
+      if (value !== null && !isNaN(value)) {
+        return Number(value)
       } else {
-        console.log('The exercise does not exist')
+        return 0
       }
+    } catch (error) {}
+  }
+
+  _retrieveExerciseData = async () => {
+    try {
+      var current_day = moment(new Date()).format('YYYY-MM-DD')
+      // var yesterday = current_day.subtract(1, "days").format("L")
+      const value = await AsyncStorage.getItem(current_day)
+      this.setState({data: [
+                            {date: this._getDateStringFromDaysAgo(6), reps: await this._getRepsForDate(this._getDateStringFromDaysAgo(6))},
+                            {date: this._getDateStringFromDaysAgo(5), reps: await this._getRepsForDate(this._getDateStringFromDaysAgo(5))},
+                            {date: this._getDateStringFromDaysAgo(4), reps: await this._getRepsForDate(this._getDateStringFromDaysAgo(4))},
+                            {date: this._getDateStringFromDaysAgo(3), reps: await this._getRepsForDate(this._getDateStringFromDaysAgo(3))},
+                            {date: this._getDateStringFromDaysAgo(2), reps: await this._getRepsForDate(this._getDateStringFromDaysAgo(2))},
+                            {date: this._getDateStringFromDaysAgo(1), reps: await this._getRepsForDate(this._getDateStringFromDaysAgo(1))},
+                            {date: this._getDateStringFromDaysAgo(0), reps: await this._getRepsForDate(this._getDateStringFromDaysAgo(0))},
+                          ]
+                          })
     } catch (error) {
       // Error retrieving data
     }
   }
 
   componentDidMount() {
-    this._retrieveExerciseName()
-  }
+    this._retrieveExerciseData()
+    var date = this._getDateStringFromDaysAgo(0)
+    console.log(this._getRepsForDate(date))
+    AsyncStorage.multiSet([
+                           [this._getDateStringFromDaysAgo(6), '1'],
+                           [this._getDateStringFromDaysAgo(5), '3'],
+                           [this._getDateStringFromDaysAgo(4), '6'],
+                           [this._getDateStringFromDaysAgo(3), '8'],
+                           [this._getDateStringFromDaysAgo(2), '2'],
+                           [this._getDateStringFromDaysAgo(1), '1'],
+                         ])
+ }
 
   render() {
     return (
@@ -52,20 +77,28 @@ export default class DailyStatsScreen extends Component {
         source={require('./assets/pictures/G3.jpg')}
         style={styles.container}
       >
-        <Text style={styles.titleText}>Your progress on {this.state.exercise}</Text>
+        <Text style={styles.titleText}>Your progress on Low Rows</Text>
 
-       <VictoryChart
-         domainPadding={20}
-         >
-         <VictoryBar
-           data={data}
-           style={{ data: { fill: "#FFFFFF" }, labels: { fill: '#FF00FF'} }}
-           labels={(d) => d.y}
-           labelComponent={<VictoryLabel dy={30}/>}
-           x="date" y="reps"/>
-         <VictoryAxis
-         />
-       </VictoryChart>
+        <VictoryChart
+          domainPadding={20}
+          >
+          <VictoryBar
+          animate={{
+            duration: 1000,
+            }}
+           barWidth = {30}
+            data={this.state.data}
+            cornerRadius={10}
+            style={{ data: { fill: 'rgba(255,255,255, 0.7)'}, labels: { fill: '#CC016B', fontFamily: 'HelveticaNeue', fontWeight: 'bold'} }}
+            labels={(d) => d.reps}
+            labelComponent={<VictoryLabel dy={30}/>}
+            x="date" y="reps"/>
+          <VictoryAxis
+           style = {{
+             tickLabels: {padding: 0, angle:90, dx: 25, dy: 5,  fontSize: 9, fontFamily: 'HelveticaNeue-Medium', fill: 'white' }
+           }}
+          />
+        </VictoryChart>
 
         <TouchableOpacity
           style={styles.button}

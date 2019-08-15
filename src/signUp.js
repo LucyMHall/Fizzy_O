@@ -35,6 +35,7 @@ export default class HomeScreen extends Component {
     }
   }
 
+
   _storeData = async (
     username,
     username_value,
