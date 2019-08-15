@@ -13,8 +13,8 @@ A physiotherapy tracking app that will record your progress over time.
 
 <p align="center">
   <img width="400" height="800" src="https://user-images.githubusercontent.com/23095774/63113904-75400500-bf8b-11e9-812a-abf0a723ca27.png">
-   <img width="400" height="800" src="https://user-images.githubusercontent.com/23095774/63113727-12e70480-bf8b-11e9-8e5a-78c844bd2997.png">
-   <img width="400" height="800" src="https://user-images.githubusercontent.com/23095774/63113728-137f9b00-bf8b-11e9-8b70-f19d7d7be1a7.png">
+   <img width="400" height="800" src="https://user-images.githubusercontent.com/23095774/63113975-97d21e00-bf8b-11e9-8591-e824945bd655.png">
+   <img width="400" height="800" src="https://user-images.githubusercontent.com/23095774/63114113-e8e21200-bf8b-11e9-9173-a6a1455136c7.png">
    <img width="400" height="800" src="https://user-images.githubusercontent.com/23095774/63113726-12e70480-bf8b-11e9-8ec8-18625897aa86.png">
 </p>
 
