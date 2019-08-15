@@ -91,6 +91,13 @@ export default class RecordSessionScreen extends Component {
         >
           <Picker.Item label="↓ Select an exercise ↓" value="" />
           <Picker.Item label="Low row" value = "Low Row" />
+          <Picker.Item label="Sit ups" value="Sit Ups" />
+          <Picker.Item label="Quadriceps Stretch" value="Quadriceps Stretch" />
+          <Picker.Item label="Hamstring Stretch" value="Hamstring Stretch" />
+          <Picker.Item label="Kick backs" value="KickBacks" />
+          <Picker.Item label="Bridging" value="Bridging" />
+          <Picker.Item label="Clam Shell" value="Clam Shell" />
+          <Picker.Item label="Lunges" value="Lunges" />
         </Picker>
 
         <Text style={styles.textStyling}>Enter reps</Text>
