@@ -81,7 +81,7 @@ export default class DailyStatsScreen extends Component {
 
       <Image
         style={{
-          width: 50, height: 50, top: 20, left: 12,
+          width: 50, height: 50, top: 40, left: 20,
           alignSelf: 'flex-end', marginTop: 10, marginLeft: 12,
           position: 'absolute'
         }}
@@ -94,7 +94,7 @@ export default class DailyStatsScreen extends Component {
           domainPadding={20}
           >
           <VictoryBar
-    
+
            barWidth = {30}
             data={this.state.data}
             cornerRadius={10}

@@ -44,9 +44,9 @@ export default class UserMainScreen extends Component {
       >
         <Image
           style={{
-            width: 50, height: 50, top: 20, left: 12, 
+            width: 50, height: 50, top: 40, left: 20,
             alignSelf: 'flex-end', marginTop: 10, marginLeft: 12,
-            position: 'absolute' }}
+            position: 'absolute'}}
           source={require('./assets/pictures/heart_white.png')}
         />
 

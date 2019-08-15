@@ -67,7 +67,7 @@ export default class RecordSessionScreen extends Component {
         >
         <Image
           style={{
-            width: 50, height: 50, top: 20, left: 16,
+            width: 50, height: 50, top: 40, left: 20,
             alignSelf: 'flex-end', marginTop: 10, marginLeft: 16,
             position: 'absolute'
           }}
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
 
   textBoxes: {
     margin: 5,
-    width: 100,
+    width: 150,
     height: 40,
     fontSize: 15,
     borderRadius: 25,
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'white',
     backgroundColor: 'rgba(255,255,255,0.4)',
-    paddingLeft: 40,
+    paddingLeft: 70,
   },
 
   button: {
