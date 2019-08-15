@@ -95,7 +95,7 @@ export default class DailyStatsScreen extends Component {
             x="date" y="reps"/>
           <VictoryAxis
            style = {{
-             tickLabels: {padding: 0, angle:90, dx: 45, dy: 5,  fontSize: 13, fontFamily: 'HelveticaNeue-Medium', fill: 'white' }
+             tickLabels: {padding: 0, angle:90, dx: 25, dy: 5,  fontSize: 9, fontFamily: 'HelveticaNeue-Medium', fill: 'white' }
            }}
           />
         </VictoryChart>
