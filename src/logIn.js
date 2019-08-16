@@ -13,6 +13,8 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
 } from 'react-native'
+// import { material } from 'react-native-typography'
+
 
 const DismissKeyboard = ({ children }) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -63,6 +65,7 @@ export default class LoginScreen extends Component {
           style={styles.container}
           behavior="padding"
         >
+        <Text style={(styles.titleText)}>Log In</Text>
         <Image
           style={{ width: 150, height: 150 }}
           source={require('./assets/pictures/heart_white.png')}
@@ -89,7 +92,7 @@ export default class LoginScreen extends Component {
             }
           }}
         >
-        <Text style={styles.buttonText}>Log In</Text>
+        <Text style={(styles.buttonText)}>Log In</Text>
         </TouchableOpacity>
         </KeyboardAvoidingView>
         </DismissKeyboard>
@@ -128,13 +131,13 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    fontFamily: 'HelveticaNeue-Bold',
+    // fontFamily: 'HelveticaNeue-Bold',
     color: '#333333',
   },
 
   titleText: {
     fontSize: 25,
-    fontFamily: 'HelveticaNeue-Light',
+    // fontFamily: 'material-display4',
     margin: 20,
     color: 'white',
     textAlign: 'center',

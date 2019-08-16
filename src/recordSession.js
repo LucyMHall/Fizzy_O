@@ -14,6 +14,8 @@ import {
 } from 'react-native'
 import { AsyncStorage } from 'react-native'
 import moment from "moment";
+// import { material } from 'react-native-typography'
+
 
 const DismissKeyboard = ({ children }) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -65,6 +67,7 @@ export default class RecordSessionScreen extends Component {
           style={styles.container}
           behavior="padding"
         >
+        <Text style={(styles.titleText)}>Record your session</Text>
         <Image
           style={{
             width: 50, height: 50, top: 40, left: 20,
@@ -100,7 +103,7 @@ export default class RecordSessionScreen extends Component {
           <Picker.Item label="Lunges" value="Lunges" />
         </Picker>
 
-        <Text style={styles.textStyling}>Enter reps</Text>
+        <Text style={(styles.textStyling)}>Enter reps</Text>
 
         <TextInput
           style={styles.textBoxes}
@@ -119,7 +122,7 @@ export default class RecordSessionScreen extends Component {
               this._checkAndStoreData()
             }
           }}>
-        <Text style={styles.buttonText}>Submit </Text>
+        <Text style={(styles.buttonText)}>Submit </Text>
         </TouchableOpacity>
         </KeyboardAvoidingView>
         </DismissKeyboard>
@@ -159,14 +162,14 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    fontFamily: 'HelveticaNeue-Bold',
+    // fontFamily: 'HelveticaNeue-Bold',
     color: '#333333',
     fontSize: 14,
   },
 
   titleText: {
     fontSize: 25,
-    fontFamily: 'HelveticaNeue-Light',
+    // fontFamily: 'material-display4',
     margin: 20,
     color: 'white',
     textAlign: 'center',
@@ -174,7 +177,7 @@ const styles = StyleSheet.create({
 
   textStyling: {
     padding: 20,
-    fontFamily: 'HelveticaNeue-Light',
+    // fontFamily: 'material-display4',
     color: 'white',
     fontSize: 16,
   },

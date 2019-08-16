@@ -10,9 +10,7 @@ import UserMainScreen from './src/userMainScreen';
 
 export default function App() {
   return (
-   
     <AppContainer/>
-
   );
 }
 const Navigator = createStackNavigator({

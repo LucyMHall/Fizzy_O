@@ -9,6 +9,8 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import { AsyncStorage } from 'react-native'
+// import { material } from 'react-native-typography'
+
 
 export default class UserMainScreen extends Component {
   static navigationOptions = { header: null }
@@ -61,14 +63,14 @@ export default class UserMainScreen extends Component {
           style={styles.button}
           onPress={() => this.props.navigation.navigate('DailyStats')}
         >
-        <Text style={styles.buttonText}>View your progress</Text>
+        <Text style={(styles.buttonText)}>View your progress</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.button}
           onPress={() => this.props.navigation.navigate('RecordSession')}
         >
-        <Text style={styles.buttonText}>Record a session</Text>
+        <Text style={(styles.buttonText)}>Record a session</Text>
         </TouchableOpacity>
       </ImageBackground>
     )
@@ -92,7 +94,7 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    fontFamily: 'HelveticaNeue-Bold',
+    // fontFamily: 'HelveticaNeue-Bold',
     fontSize: 14,
     color: '#333333',
     padding: 5,
@@ -100,7 +102,7 @@ const styles = StyleSheet.create({
 
   titleText: {
     fontSize: 25,
-    fontFamily: 'HelveticaNeue-Light',
+    // fontFamily: 'material',
     margin: 20,
     color: 'white',
     textAlign: 'center',
