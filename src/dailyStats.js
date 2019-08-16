@@ -63,14 +63,6 @@ export default class DailyStatsScreen extends Component {
     this._retrieveExerciseData()
     var date = this._getDateStringFromDaysAgo(0)
     console.log(this._getRepsForDate(date))
-    AsyncStorage.multiSet([
-                           [this._getDateStringFromDaysAgo(6), '1'],
-                           [this._getDateStringFromDaysAgo(5), '3'],
-                           [this._getDateStringFromDaysAgo(4), '6'],
-                           [this._getDateStringFromDaysAgo(3), '8'],
-                           [this._getDateStringFromDaysAgo(2), '2'],
-                           [this._getDateStringFromDaysAgo(1), '1'],
-                         ])
  }
 
   render() {
