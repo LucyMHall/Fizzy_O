@@ -9,13 +9,6 @@ Enzyme.configure({ adapter: new Adapter() });
 import renderer from 'react-test-renderer'
 
 describe ('Home Screen ', () => {
-  describe ('#Text', () => {
-    it("should render a welcome text", () => {
-      const wrap = shallow(<HomeScreen />);
-
-      expect(wrap.containsMatchingElement("Welcome to Fizzy_O!")).toBeTruthy()
-      });
-    });
     describe ('#Text', () => {
       it("should render a sign up text", () => {
         const wrap = shallow(<HomeScreen />);

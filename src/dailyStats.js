@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, VictoryLabel } from 'victory-native';
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryLabel } from 'victory-native';
 import {
   StyleSheet,
   Text,
-  View,
   Image,
   TouchableOpacity,
   ImageBackground,
