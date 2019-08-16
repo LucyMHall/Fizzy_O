@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import { AsyncStorage } from 'react-native'
 import moment from "moment";
-import { material } from 'react-native-typography'
+// import { material } from 'react-native-typography'
 
 export default class DailyStatsScreen extends Component {
   static navigationOptions = { header: null }
@@ -84,9 +84,9 @@ export default class DailyStatsScreen extends Component {
           domainPadding={20}
           >
           <VictoryBar
-          animate={{
-            duration: 1000,
-            }}
+          // animate={{
+          //   duration: 1000,
+          //   }}
            barWidth = {30}
             data={this.state.data}
             cornerRadius={10}
@@ -105,7 +105,7 @@ export default class DailyStatsScreen extends Component {
           style={styles.button}
           onPress={() => this.props.navigation.navigate('UserMain')}
         >
-          <Text style={styles.buttonText}>Back to homepage</Text>
+          <Text style={(styles.buttonText)}>Back to homepage</Text>
         </TouchableOpacity>
       </ImageBackground>
     )
@@ -130,14 +130,14 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    fontFamily: 'HelveticaNeue-Bold',
+    // fontFamily: 'HelveticaNeue-Bold',
     color: '#333333',
     padding: 5,
   },
 
   titleText: {
     fontSize: 25,
-    fontFamily: 'material',
+    // fontFamily: 'material',
     margin: 20,
     color: 'white',
     textAlign: 'center',

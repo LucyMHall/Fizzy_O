@@ -12,7 +12,7 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
 } from 'react-native'
-import { material } from 'react-native-typography'
+// import { material } from 'react-native-typography'
 
 
 const DismissKeyboard = ({ children }) => (
@@ -64,7 +64,7 @@ export default class LoginScreen extends Component {
           style={styles.container}
           behavior="padding"
         >
-        <Text style={(material.display4, styles.titleText)}>Log In</Text>
+        <Text style={(styles.titleText)}>Log In</Text>
         <TextInput
           style={styles.textBoxes}
           placeholder="Email"
@@ -86,7 +86,7 @@ export default class LoginScreen extends Component {
             }
           }}
         >
-        <Text style={styles.buttonText}>Log In</Text>
+        <Text style={(styles.buttonText)}>Log In</Text>
         </TouchableOpacity>
         </KeyboardAvoidingView>
         </DismissKeyboard>
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    fontFamily: 'HelveticaNeue-Bold',
+    // fontFamily: 'HelveticaNeue-Bold',
     color: '#333333',
   },
 

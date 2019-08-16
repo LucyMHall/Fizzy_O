@@ -13,7 +13,7 @@ import {
 } from 'react-native'
 import { AsyncStorage } from 'react-native'
 import moment from "moment";
-import { material } from 'react-native-typography'
+// import { material } from 'react-native-typography'
 
 
 const DismissKeyboard = ({ children }) => (
@@ -66,7 +66,7 @@ export default class RecordSessionScreen extends Component {
           style={styles.container}
           behavior="padding"
         >
-        <Text style={(material.display4, styles.titleText)}>Record your session</Text>
+        <Text style={(styles.titleText)}>Record your session</Text>
 
         <Picker
           style={{ height: 200, width: 400,}}
@@ -85,7 +85,7 @@ export default class RecordSessionScreen extends Component {
           <Picker.Item label="Low row" value = "Low Row" />
         </Picker>
 
-        <Text style={(material.display4, styles.textStyling)}>Enter reps</Text>
+        <Text style={(styles.textStyling)}>Enter reps</Text>
 
         <TextInput
           style={styles.textBoxes}
@@ -104,7 +104,7 @@ export default class RecordSessionScreen extends Component {
               this._checkAndStoreData()
             }
           }}>
-        <Text style={styles.buttonText}>Submit </Text>
+        <Text style={(styles.buttonText)}>Submit </Text>
         </TouchableOpacity>
         </KeyboardAvoidingView>
         </DismissKeyboard>
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    fontFamily: 'HelveticaNeue-Bold',
+    // fontFamily: 'HelveticaNeue-Bold',
     color: '#333333',
     fontSize: 14,
   },

@@ -15,7 +15,7 @@ import {
 import { iOSUIKit } from 'react-native-typography'
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native'
 import { AsyncStorage } from 'react-native'
-import { material } from 'react-native-typography'
+// import { material } from 'react-native-typography'
 
 
 const DismissKeyboard = ({ children }) => (
@@ -78,7 +78,7 @@ export default class HomeScreen extends Component {
           style={{ width: 150, height: 150 }}
           source={require('./assets/pictures/heart_white.png')}
         />
-        <Text style={(material.display4, styles.titleText)}>Sign up</Text>
+        <Text style={(styles.titleText)}>Sign up</Text>
 
         <TextInput
           style={styles.textBoxes}
@@ -127,7 +127,7 @@ export default class HomeScreen extends Component {
           style={styles.button}
           onPress={() => this.props.navigation.navigate('Login')}
         >
-        <Text style={styles.buttonText}>Log In</Text>
+        <Text style={(styles.buttonText)}>Log In</Text>
         </TouchableOpacity>
         </KeyboardAvoidingView>
         </DismissKeyboard>
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
  },
 
  buttonText: {
-   fontFamily: 'HelveticaNeue-Bold',
+  //  fontFamily: 'HelveticaNeue-Bold',
    color: '#333333',
  },
 
