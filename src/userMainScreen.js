@@ -8,6 +8,8 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import { AsyncStorage } from 'react-native'
+import { material } from 'react-native-typography'
+
 
 export default class UserMainScreen extends Component {
   static navigationOptions = { header: null }
@@ -86,7 +88,7 @@ const styles = StyleSheet.create({
 
   titleText: {
     fontSize: 25,
-    fontFamily: 'HelveticaNeue-Light',
+    fontFamily: 'material',
     margin: 20,
     color: 'white',
     textAlign: 'center',

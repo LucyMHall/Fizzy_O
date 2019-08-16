@@ -15,6 +15,8 @@ import {
 import { iOSUIKit } from 'react-native-typography'
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native'
 import { AsyncStorage } from 'react-native'
+import { material } from 'react-native-typography'
+
 
 const DismissKeyboard = ({ children }) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -76,7 +78,7 @@ export default class HomeScreen extends Component {
           style={{ width: 150, height: 150 }}
           source={require('./assets/pictures/heart_white.png')}
         />
-        <Text style={styles.titleText}>Sign up</Text>
+        <Text style={(material.display4, styles.titleText)}>Sign up</Text>
 
         <TextInput
           style={styles.textBoxes}
@@ -172,14 +174,14 @@ const styles = StyleSheet.create({
 
  textStyling: {
    padding:20,
-   fontFamily: 'HelveticaNeue-Light',
+  //  fontFamily: 'material-display4',
    color: 'white',
    fontSize: 16,
  },
 
  titleText: {
    fontSize: 25,
-   fontFamily: 'HelveticaNeue-Light',
+  //  fontFamily: 'material-display4',
    margin: 20,
    color: 'white',
    textAlign: 'center',

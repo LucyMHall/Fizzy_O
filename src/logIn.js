@@ -12,6 +12,8 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
 } from 'react-native'
+import { material } from 'react-native-typography'
+
 
 const DismissKeyboard = ({ children }) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -62,7 +64,7 @@ export default class LoginScreen extends Component {
           style={styles.container}
           behavior="padding"
         >
-        <Text style={styles.titleText}>Log In</Text>
+        <Text style={(material.display4, styles.titleText)}>Log In</Text>
         <TextInput
           style={styles.textBoxes}
           placeholder="Email"
@@ -129,7 +131,7 @@ const styles = StyleSheet.create({
 
   titleText: {
     fontSize: 25,
-    fontFamily: 'HelveticaNeue-Light',
+    // fontFamily: 'material-display4',
     margin: 20,
     color: 'white',
     textAlign: 'center',
