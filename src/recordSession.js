@@ -67,7 +67,6 @@ export default class RecordSessionScreen extends Component {
           style={styles.container}
           behavior="padding"
         >
-        <Text style={(styles.titleText)}>Record your session</Text>
         <Image
           style={{
             width: 50, height: 50, top: 40, left: 20,

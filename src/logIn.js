@@ -65,7 +65,6 @@ export default class LoginScreen extends Component {
           style={styles.container}
           behavior="padding"
         >
-        <Text style={(styles.titleText)}>Log In</Text>
         <Image
           style={{ width: 150, height: 150 }}
           source={require('./assets/pictures/heart_white.png')}
