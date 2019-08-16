@@ -6,6 +6,7 @@ import {
   View,
   TextInput,
   Button,
+  Image,
   ImageBackground,
   TouchableOpacity,
   KeyboardAvoidingView,
@@ -65,6 +66,11 @@ export default class LoginScreen extends Component {
           behavior="padding"
         >
         <Text style={(styles.titleText)}>Log In</Text>
+        <Image
+          style={{ width: 150, height: 150 }}
+          source={require('./assets/pictures/heart_white.png')}
+        />
+        <Text style={styles.titleText}>Log In</Text>
         <TextInput
           style={styles.textBoxes}
           placeholder="Email"

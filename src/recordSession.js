@@ -5,6 +5,7 @@ import {
   View,
   TextInput,
   Picker,
+  Image,
   ImageBackground,
   TouchableOpacity,
   KeyboardAvoidingView,
@@ -67,6 +68,16 @@ export default class RecordSessionScreen extends Component {
           behavior="padding"
         >
         <Text style={(styles.titleText)}>Record your session</Text>
+        <Image
+          style={{
+            width: 50, height: 50, top: 40, left: 20,
+            alignSelf: 'flex-end', marginTop: 10, marginLeft: 16,
+            position: 'absolute'
+          }}
+          source={require('./assets/pictures/heart_white.png')}
+        />
+
+        <Text style={styles.titleText}>Record your session</Text>
 
         <Picker
           style={{ height: 200, width: 400,}}
@@ -83,6 +94,13 @@ export default class RecordSessionScreen extends Component {
         >
           <Picker.Item label="↓ Select an exercise ↓" value="" />
           <Picker.Item label="Low row" value = "Low Row" />
+          <Picker.Item label="Sit ups" value="Sit Ups" />
+          <Picker.Item label="Quadriceps Stretch" value="Quadriceps Stretch" />
+          <Picker.Item label="Hamstring Stretch" value="Hamstring Stretch" />
+          <Picker.Item label="Kick backs" value="KickBacks" />
+          <Picker.Item label="Bridging" value="Bridging" />
+          <Picker.Item label="Clam Shell" value="Clam Shell" />
+          <Picker.Item label="Lunges" value="Lunges" />
         </Picker>
 
         <Text style={(styles.textStyling)}>Enter reps</Text>
@@ -115,7 +133,6 @@ export default class RecordSessionScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 4,
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
@@ -123,7 +140,7 @@ const styles = StyleSheet.create({
 
   textBoxes: {
     margin: 5,
-    width: 100,
+    width: 150,
     height: 40,
     fontSize: 15,
     borderRadius: 25,
@@ -132,7 +149,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'white',
     backgroundColor: 'rgba(255,255,255,0.4)',
-    paddingLeft: 40,
+    paddingLeft: 70,
   },
 
   button: {

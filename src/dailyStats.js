@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
   TouchableOpacity,
   ImageBackground,
 } from 'react-native'
@@ -78,15 +79,22 @@ export default class DailyStatsScreen extends Component {
         source={require('./assets/pictures/G3.jpg')}
         style={styles.container}
       >
+
+      <Image
+        style={{
+          width: 50, height: 50, top: 40, left: 20,
+          alignSelf: 'flex-end', marginTop: 10, marginLeft: 12,
+          position: 'absolute'
+        }}
+        source={require('./assets/pictures/heart_white.png')}
+      />
+
         <Text style={styles.titleText}>Your progress on Low Rows</Text>
 
         <VictoryChart
           domainPadding={20}
           >
           <VictoryBar
-          // animate={{
-          //   duration: 1000,
-          //   }}
            barWidth = {30}
             data={this.state.data}
             cornerRadius={10}

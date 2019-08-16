@@ -4,6 +4,7 @@ import {
   Text,
   View,
   Button,
+  Image,
   ImageBackground,
   TouchableOpacity,
 } from 'react-native'
@@ -43,6 +44,19 @@ export default class UserMainScreen extends Component {
         source={require('./assets/pictures/G3.jpg')}
         style={styles.container}
       >
+        <Image
+          style={{
+            width: 50, height: 50, top: 40, left: 20,
+            alignSelf: 'flex-end', marginTop: 10, marginLeft: 12,
+            position: 'absolute'}}
+          source={require('./assets/pictures/heart_white.png')}
+        />
+
+        <Image
+          style={{ width: 70, height: 70, flexDirection: 'row', justifyContent: 'space-between' }}
+          source={require("./assets/pictures/uw.png")}
+        />
+
         <Text style={styles.titleText}>Hi, {this.state.username}</Text>
 
         <TouchableOpacity
